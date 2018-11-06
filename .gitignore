@@ -1,0 +1,7 @@
+# Ignore any executables
+*/bin/*
+
+*/.DS_Store
+*/.vscode
+
+.DS_Store
