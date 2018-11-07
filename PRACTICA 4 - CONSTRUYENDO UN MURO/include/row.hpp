@@ -1,17 +1,28 @@
 #pragma once
 
 #include "block.hpp"
-#include <set>
+#include <vector>
+#include <iostream>
 
 class row{
 
     public:
 
     row();
+    row(int, int);
     ~row();
+    void insert_block(int);
+    void erase_block();
+    int get_last();
+    
+    ostream& write(ostream&);
 
+   
     private:
 
-    set<block> row_;
+    int rowLenght;
+    int rowHeight;
+    
+    vector<int> row_;
     
 };

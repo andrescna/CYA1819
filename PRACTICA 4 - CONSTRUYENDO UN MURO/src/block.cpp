@@ -1,8 +1,7 @@
 #include "block.hpp"
 
-
-
-block::block(){
+block::block()
+{
     blockHeight = 1;
     blockLenght = 1;
 }
@@ -18,7 +17,9 @@ int block::get_lenght(){
     return (blockLenght);
 }
 
-
-block::~block(){
-
+int block::get_height(){
+    return (blockHeight);
 }
+
+
+block::~block(){}

@@ -10,6 +10,7 @@
 #include <iostream>
 
 #include "wall.hpp"
+#include "common.hpp"
 
 using namespace std;
 
@@ -35,14 +36,21 @@ int main(){
     block bloque2(3,1);
 
     cout << bloque1.get_lenght() << endl;
-    
-    //calculamos las filas posibles con esos bloques
 
 
 
 
-    // calcular (bloques)
-    // calcular filas posibles
+//calculamos las filas posibles con esos bloques
+
+    vector<row> filas = calc_valid_rows(bloque1, bloque2, wallLenght);
+
+    cout << "si esto funciona debería dar " << filas.size() << "filas" << endl;
+
+    for (int i=0; i<5; i++){
+        filas[i].write(cout);
+
+
+    }
 
 
     // calcular muros posibles

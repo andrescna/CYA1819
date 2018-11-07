@@ -2,16 +2,16 @@
 
 using namespace std;
 
-
 class block {
 
     public:
 
     block();
-    block(int l, int h);
+    block(int, int);
     ~block();
 
     int get_lenght();
+    int get_height();
 
     private:
 
