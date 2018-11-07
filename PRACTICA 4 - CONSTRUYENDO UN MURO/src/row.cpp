@@ -27,12 +27,20 @@ void row::erase_block()
 
 
 
-int row::get_last(){
-
+int row::get_last()
+{
     return row_.back();
 }
 
+int row::get_row_size()
+{
+    return row_.size();
+}
 
+int row::get_row_element(int i)
+{
+    return row_[i];
+}
 
 
 

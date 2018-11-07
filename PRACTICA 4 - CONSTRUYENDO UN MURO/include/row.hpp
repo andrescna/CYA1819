@@ -11,9 +11,13 @@ class row{
     row();
     row(int, int);
     ~row();
+
     void insert_block(int);
     void erase_block();
+    
     int get_last();
+    int get_row_size();
+    int get_row_element(int);
     
     ostream& write(ostream&);
 

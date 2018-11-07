@@ -3,6 +3,7 @@
 #include "wall.hpp"
 
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -14,4 +15,4 @@ void calc_next_block(vector<row> &, row, int, int, int);
 // For calculing valid walls set
 
 vector<wall> calc_valid_walls(vector<row>, int, int);
-void calc_row_order(vector<wall> &, vector<row>, wall);
+void calc_row_order(vector<wall> &, vector<row>, wall, int, bool);
