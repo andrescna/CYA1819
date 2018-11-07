@@ -37,25 +37,24 @@ void calc_next_block(vector<row> &validRows, row temp, int b1_l, int b2_l, int w
         temp.erase_block();
     }
 
-        if ((temp.get_last() < wallLength) && (test==true)){
+    if ((temp.get_last() < wallLength) && (test==true)){
 
             temp.erase_block();
+
             temp.insert_block(b2_l+temp.get_last());
     
-        if (temp.get_last() < wallLength) {
-            test = true;
-            calc_next_block(validRows,temp,b1_l,b2_l,wallLength);
-        }
+            if (temp.get_last() < wallLength) {
+                    test = true;
+                    calc_next_block(validRows,temp,b1_l,b2_l,wallLength);
+            }
 
-        if (temp.get_last() == wallLength)
-        {
-            validRows.push_back(temp);
-        }
+            if (temp.get_last() == wallLength){
+                    validRows.push_back(temp);
+            }
 
-        if (temp.get_last() > wallLength)
-        {
-            temp.erase_block();
-        }
+            if (temp.get_last() > wallLength){
+                    temp.erase_block();
+            }
     }
 }
 
