@@ -4,6 +4,8 @@
 #include <vector>
 #include <iostream>
 
+using namespace std;
+
 class row{
 
     public:
@@ -30,3 +32,6 @@ class row{
     vector<int> row_;
     
 };
+
+vector<row> calc_valid_rows(block, block, int);
+void calc_next_block(vector<row> &, row, int, int, int);

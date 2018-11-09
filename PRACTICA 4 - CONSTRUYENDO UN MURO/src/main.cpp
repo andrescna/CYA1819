@@ -7,9 +7,7 @@
 #include <iostream>
 
 #include "wall.hpp"
-#include "common.hpp"
 
-using namespace std;
 
 int main(){
     

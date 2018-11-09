@@ -3,8 +3,6 @@
 #include "row.hpp"
 #include <vector>
 
-using namespace std;
-
 class wall {
 
     public:
@@ -28,6 +26,8 @@ class wall {
     int wallLenght;
     int wallHeight;
     vector<row> wall_;
-
-
+    
 };
+
+vector<wall> calc_valid_walls(vector<row>, int, int);
+void calc_row_order(vector<wall> &, vector<row>, wall, int, bool);
