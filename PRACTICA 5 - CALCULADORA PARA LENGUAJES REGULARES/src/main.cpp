@@ -21,19 +21,34 @@ int main(){
     cout << "Lenguaje 1: ";
 
     
-    
-    
-    //LEER CADENA
-    string prueba;
-    
-    getline(cin, prueba, '\n');
+    string userInput;
+    getline(cin, userInput, '\n');
 
     // LLAMAR AL CONSTRUCTOR DEL LENGUAJE
 
+    //language L1(userInput);
+
+    cout << endl;    
+    cout << "Por favor defina un segundo lenguaje si quiere hacer operaciones con 2 lenguajes" << endl;
+    cout << "Si no quiere definirlo ahora pulse enter" << endl;
+    cout << "Lenguaje 2: ";
+
+    getline(cin, userInput, '\n');
+
+    bool L2_created = false;
+
+    if (userInput!=""){
+                //language L2(userInput);
+                L2_created = true;
+    }
+
+    
     //DISEÑAR ESTE PARSER VA A SER DE LEJOS LO PEOR DE LA PRÁCTICA
 
-  
+    ////////////////////////////// MAIN MENU ///////////////////////////////////
+
     bool end_loop = false;
+    bool end_loop2 = false;
 
     while (end_loop == false) {
         
@@ -66,7 +81,8 @@ int main(){
 
                 case 'x':
                         cout << endl << "Gracias por utilizar la calculadora de lenguajes" << endl << endl;
-                        end_loop=true;
+                        end_loop = true;
+                        end_loop2 = true;
                         break;
 
                 default:
@@ -75,7 +91,6 @@ int main(){
         }
 
         // For doing more operatios or exit the program
-        bool end_loop2=false;
 
         while (end_loop2==false){
 

@@ -8,7 +8,7 @@ class language {
 
     public:
 
-    language();
+    language(const string);
     ~language();
 
 

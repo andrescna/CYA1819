@@ -1,16 +1,15 @@
+/// Class word, for storing language strings. Using "word" to avoid confusion with std::string
+
 #pragma once
 
 #include "alphabet.hpp"
-
 
 class word {
 
     public:
 
-    word();
+    word(string);
     ~word();
-
-
 
     private:
 

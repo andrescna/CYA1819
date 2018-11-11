@@ -11,9 +11,10 @@ class alphabet {
     public:
 
     alphabet();
+    alphabet(const string);
     ~alphabet();
 
-    void parse_alphabet(); /*aquíhabráqueverquépones*/
+    void parse_alphabet(); /*aquíhabráqueverquépones*/  //esto no va a ir aquí
 
 
     private:
