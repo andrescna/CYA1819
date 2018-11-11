@@ -18,8 +18,11 @@ OBJECT = $(patsubst %, $(BIN)/% ,$(notdir $(SOURCE:.cpp=.o)))
 $(BIN)/$(TARGET) : $(OBJECT)
 				$(CXX) -o $@ $^ #$(FLAGS)
 # -c "Compile but not link"
-$(BIN)/%.o : $(SRC)/%.cpp
+$(BIN)/%.o : $(SRC)/%.cpp | bin
 				$(CXX) $(CFLAGS) -c $< -o $@
+# for creating bin directory if it doesn't exist
+bin:
+	mkdir -p $@
 
 
 ####### Alias for cleaning and runing
