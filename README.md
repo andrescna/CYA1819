@@ -12,7 +12,7 @@ No se asegura que funcionen o que el código sea bonito :P
 
 ## Prácticas de Computabilidad
 
-* [Práctica 4 - Construyendo un muro](PRACTICA&#324&#32-&#32CONSTRUYENDO&#32UN&#32MURO/README.md)
+* [Práctica 4 - Construyendo un muro](PRACTICA%204%20-%20CONSTRUYENDO%20UN%20MURO/README.md)
 * [Práctica 5 - Calculadora](PRACTICA&#325&#32-&#32      /README.md) 
 * [Práctica 6 - ]
 * [Práctica 7 - ]
