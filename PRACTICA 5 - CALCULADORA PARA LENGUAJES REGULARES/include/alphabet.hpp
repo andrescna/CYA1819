@@ -1,9 +1,8 @@
 #pragma once
 
 #include <set>
-#include <string>
 
-using namespace std;
+#include "word.hpp"
 
 
 class alphabet {
@@ -11,15 +10,20 @@ class alphabet {
     public:
 
     alphabet();
-    alphabet(const string);
+    alphabet(const word);
     ~alphabet();
+
+    set<word> get_symbols();
+    void insert_symbol(word symbol);
+    bool is_symbol_in_alphabet(word symbol);
+
 
     void parse_alphabet(); /*aquíhabráqueverquépones*/  //esto no va a ir aquí
 
 
     private:
 
-    set<string> symbols_;
+    set<word> symbols_;
     
 };
 

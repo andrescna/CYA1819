@@ -14,6 +14,8 @@ RM = rm -f
 SOURCE = $(wildcard $(SRC)/*.cpp)
 OBJECT = $(patsubst %, $(BIN)/% ,$(notdir $(SOURCE:.cpp=.o)))
 
+
+
 ######## Compilador
 $(BIN)/$(TARGET) : $(OBJECT)
 				$(CXX) -o $@ $^ #$(FLAGS)

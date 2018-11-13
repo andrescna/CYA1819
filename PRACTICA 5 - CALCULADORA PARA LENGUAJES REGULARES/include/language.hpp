@@ -2,15 +2,20 @@
 
 #pragma once
 
-#include "word.hpp"
+#include "alphabet.hpp"
 
 class language {
 
     public:
 
-    language(const string);
+    language();
     ~language();
 
+    alphabet get_alphabet();
+    set<word> get_language_elements();
+    
+    void add_alphabet_symbol();
+    void add_word();
 
 
     private:
@@ -19,6 +24,7 @@ class language {
 
 };
 
+language parse_language (string userInput, bool &syntaxError);
 void add_second_language();
 
 //mete aquí las operaciones con lenguajes :D

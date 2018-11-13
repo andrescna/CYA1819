@@ -7,6 +7,9 @@
 #include "language.hpp"
 
 #include <iostream>
+#include <set>
+#include <string>
+using namespace std;
 
 
 int main(){
@@ -20,19 +23,31 @@ int main(){
     cout << "Por favor defina un lenguaje. El formato es: { símbolos, separados, por, comas }" << endl;
     cout << "Lenguaje 1: ";
 
-    
+
     string userInput;
+
+    //cin >> userInput;
     getline(cin, userInput, '\n');
 
     // LLAMAR AL CONSTRUCTOR DEL LENGUAJE
 
-    //language L1(userInput);
+    bool test = true;
+
+    language L1 = parse_language(userInput,test);
+
+
+        //*************************************************************************************************************************
+        // COSAS QUE NO FUNCIONAN: 
+        // el parser funciona, pero no consigo que meta las cosas donde debe
+        // el resto debería ser más sencillo, pero es que no puedo dedicarle más tiempo :shrug:
+        //*************************************************************************************************************************
+
 
     cout << endl;    
     cout << "Por favor defina un segundo lenguaje si quiere hacer operaciones con 2 lenguajes" << endl;
     cout << "Si no quiere definirlo ahora pulse enter" << endl;
     cout << "Lenguaje 2: ";
-
+/*
     getline(cin, userInput, '\n');
 
     bool L2_created = false;
@@ -140,5 +155,5 @@ int main(){
 
 
 
-
+//*/
 }
