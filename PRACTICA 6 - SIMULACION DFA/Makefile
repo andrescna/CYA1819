@@ -1,6 +1,6 @@
 # CYA1819 - P5
 
-TARGET = regCalc
+TARGET = DFAsim
 
 SRC = src
 INC = include
