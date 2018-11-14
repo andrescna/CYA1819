@@ -5,26 +5,25 @@
 
 class DFA{
 
+     private:
+
+    int totalStates_; // o unsigned??
+    int initialState_;
+    set<state> states_; //o un vector??
 
     public:
 
-
-    //constructor
+    DFA();
+    ~DFA();
     
+    // aquí mete un vector<string>* separarString(string linea); hará falta????
     
-    //leer DFA desde fichero e inicializarlo
-    // mostrar DFA
-    //identificar estados de muerte
-    //mostrar traza de transiciones
-
+    // Class DFA methods
+    void readDFA(string file);
+    void showDFA();
+    void calcDeathStates();
+    void analyze_word(char* word); 
 
     private:
-
-
-    set<state> states_;
-
-
-
-
 
 };
