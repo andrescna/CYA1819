@@ -18,7 +18,7 @@ Por ejemplo, en la imagen siguiente se muestra un ejemplo de un muro de dimensio
 
 Ejemplo de un muro no válido
 
-![muro no válido](Ejemplo_MuroNoValido.jpg)
+![muro no válido](doc/Ejemplo_MuroNoValido.jpg)
 
 
 Teniendo en cuenta estas restricciones, existen 8 formas distintas de construir muros válidos de dimensiones 9x3. Esto se denotará formalmente como M(9, 3) = 8.
@@ -28,7 +28,7 @@ De forma general, nuestro objetivo será entonces calcular M(L, H), dados un L y
 
 
 ## Observaciones
-
+doc
 * Para analizar la propuesta desarrollada será necesario hacer pruebas para muros de distintas dimensiones LxH. Habrá que estudiar la eficiencia del programa conforme se aumentan las dimensiones del muro. Será imprescindible saber hasta dónde puede llegar la propuesta que hayamos hecho.
 
 * En relación a la eficiencia del programa, será fundamental la decisión relativa a cómo representar los bloques del muro, su disposición dentro de una determinada fila y la secuencia de filas adyacentes que conformarán el muro. Esta representación será decisiva a la hora de poder afrontar problemas de mayores dimensiones.
