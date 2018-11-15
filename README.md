@@ -4,7 +4,6 @@ Este repositorio contiene las prácticas de la asignatura «Computabilidad y Alg
 
 No se asegura que funcionen o que el código sea bonito :P
 
-
 ## Prácticas de Algoritmia
 
 * [Práctica 2 - Estrategia Greedy](PRACTICA%202%20-%20ESTRATEGIA%20GREEDY)
@@ -13,7 +12,7 @@ No se asegura que funcionen o que el código sea bonito :P
 ## Prácticas de Computabilidad
 
 * [Práctica 4 - Construyendo un muro](PRACTICA%204%20-%20CONSTRUYENDO%20UN%20MURO)
-* [Práctica 5 - Calculadora para lenguajes regulares](PRACTICA%205%20-%20CALCULADORA%20PARA%20LENGUAJES%20REGULARES) 
-* [Práctica 6 - ]
+* [Práctica 5 - Calculadora para lenguajes regulares](PRACTICA%205%20-%20CALCULADORA%20PARA%20LENGUAJES%20REGULARES)
+* [Práctica 6 - Simulacíon de un DFA](PRACTICA%206%20-%20SIMULACION%20DE%20UN%20DFA)
 * [Práctica 7 - ]
 * [Práctica 8 - ]

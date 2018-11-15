@@ -70,7 +70,7 @@ language parse_language (string userInput, bool &syntaxError){
                                 // si leemos epsilon
                                 if (*i == '&'){
                                         //readChar = "";
-                                        cout << "VACCCCIO\n";
+                                        cout << "VACIO\n";
                                         //meter en el alfabeto
                                         //meter en el lenguaje
                                         //suponemos que es una coma (?)
