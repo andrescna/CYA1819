@@ -1,15 +1,19 @@
 #pragma once
 
+#include <string>
+#include <fstream>
+#include <iostream>
 
 #include "state.hpp"
+
 
 class DFA{
 
      private:
 
     int totalStates_; // o unsigned??
-    int initialState_;
-    set<state> states_; //o un vector??
+    char initialState_;
+    set<state> setStates_; //o un vector??
 
     public:
 
@@ -19,10 +23,10 @@ class DFA{
     // aquí mete un vector<string>* separarString(string linea); hará falta????
     
     // Class DFA methods
-    void readDFA(string file);
-    void showDFA();
-    void calcDeathStates();
-    void analyze_word(char* word); 
+    int read_DFA(string file);
+    void show_DFA();
+    void calc_death_states();
+    int analyze_word(string word); 
 
     private:
 

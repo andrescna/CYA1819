@@ -1,29 +1,24 @@
 #pragma once
 
-
 class transition{
-
-
-    public:
-
-    transition(); //no debería hacer falta ???
-    transition(char character, int nextState);
-    ~transition();
-
-    char get_character();
-    int get_next_state();
-
 
     private:
 
     //cada transición es un par de elementos: carácter y siguiente estado
     char character_;
-    int nextState_;
+    char nextState_;
+    
+    public:
 
+    transition();
+    transition(char character, char nextState);
+    ~transition();
+
+    char get_character();
+    char get_next_state();
+
+    transition& operator=(const transition &rhs);
+    int operator==(const transition &rhs) const;
+    int operator<(const transition &rhs) const;
 
 };
-
-
-
-
-// SI USAS SETS DE CARACTERES VAS A NECESITAR METER LOS OPERADORES, SEGURO
