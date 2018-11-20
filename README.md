@@ -13,7 +13,7 @@ No se asegura que funcionen o que el código sea bonito :P
 ## Prácticas de Computabilidad
 
 * [Práctica 4 - Construyendo un muro](PRACTICA%204%20-%20CONSTRUYENDO%20UN%20MURO)
-* [**INCOMPLETA** — Práctica 5 - Calculadora para lenguajes regulares](PRACTICA%205%20-%20CALCULADORA%20PARA%20LENGUAJES%20REGULARES)
+* **INCOMPLETA** [Práctica 5 - Calculadora para lenguajes regulares](PRACTICA%205%20-%20CALCULADORA%20PARA%20LENGUAJES%20REGULARES)
 * [Práctica 6 - Simulación de un DFA](PRACTICA%206%20-%20SIMULACION%20DFA)
 * [Práctica 7 - Simulación de un NFA](PRACTICA%206%20-%20SIMULACION%20NFA)
 * [Práctica 8 - ]
