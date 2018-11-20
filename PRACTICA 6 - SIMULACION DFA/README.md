@@ -13,7 +13,7 @@ El autómata finito determinista vendrá definido en un fichero de texto con ext
 
 A continuación vendrá una línea para cada uno de los estados. Cada línea contendrá los siguientes números, separados entre sí por espacios en blanco:
 
-* Número identificador del estado. Los estados del autómata se representarán mediante números enteros sin signo. La numeración de los estados corresponderá a los primeros números naturales comenzando por 0.
+  * Número identificador del estado. Los estados del autómata se representarán mediante números enteros sin signo. La numeración de los estados corresponderá a los primeros números naturales comenzando por 0.
   * Un 1 si se trata de un estado de aceptación y un 0 si se trata de un estado de no aceptación.
   * Número de transiciones que posee el estado.  
   A continuación, para cada una de las transiciones, y separados por espacios en blanco, se detallará la información siguiente:
