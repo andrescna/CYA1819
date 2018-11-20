@@ -71,10 +71,32 @@ int main(){
                                 int error_creating_dfa = dfa.read_DFA(filename);
                                 
                                 if (error_creating_dfa == 1 ){
-                                        cout << endl << "\e[1mERROR\e[0m. DFA mal formateado o no encontrado" << endl;
+                                        cout << endl << "\e[1mERROR\e[0m. Nombre de fichero no encontrado." << endl;
                                         end_loop2 = true;
                                         break;
                                 }
+
+                                if (error_creating_dfa == 2 ){
+                                        cout << endl << "\e[1mERROR\e[0m. DFA mal formateado: más de un estado inicial" << endl;
+                                        end_loop2 = true;
+                                        break;
+                                }
+                                if (error_creating_dfa == 3 ){
+                                        cout << endl << "\e[1mERROR\e[0m. DFA mal formateado: múltiples transiciones para el mismo símbolo en un estado." << endl;
+                                        end_loop2 = true;
+                                        break;
+                                }
+                                if (error_creating_dfa == 4 ){
+                                        cout << endl << "\e[1mERROR\e[0m. DFA mal formateado: Nº de estados incorrecto." << endl;
+                                        end_loop2 = true;
+                                        break;
+                                }
+                                if (error_creating_dfa == 5 ){
+                                        cout << endl << "\e[1mERROR\e[0m. DFA mal formateado: Nº de transiciones incorrecto para algún estado." << endl;
+                                        end_loop2 = true;
+                                        break;
+                                }
+
                                 
                                 dfa_loaded = true;
 

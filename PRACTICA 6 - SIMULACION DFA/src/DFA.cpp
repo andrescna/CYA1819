@@ -1,10 +1,8 @@
 #include "DFA.hpp"
 
- DFA::DFA(){
- }
+DFA::DFA(){}
 
- DFA::~DFA(){
-}
+DFA::~DFA(){}
 
 ////// Class DFA methods
 
@@ -23,7 +21,7 @@ int DFA::read_DFA(string filename) {
 
         getline(file, line);
         if (line.size() > 1){    //comprueba si el estado inicial es único
-            return (1);
+            return (2);
         }
         initialState_ = line.at(0);
 
@@ -32,8 +30,6 @@ int DFA::read_DFA(string filename) {
 
             getline(file, line);
 
-
-            // ESTO NO VA A SERVIR (o sí??)
             int j=0;
 
             char stateId = line[j];
@@ -41,32 +37,56 @@ int DFA::read_DFA(string filename) {
             char isFinalState = line[j];
             state temp(stateId, isFinalState);
             
-            //TE SALTAS EL NUMERO DE TRANSICIONES. ESO SE VE CON UN set.size()
-            j+=4;
+            //TE SALTAS EL NUMERO DE TRANSICIONES.
+            j+=2;
 
-            // nestado aceptacion [simbolo estadofinal]
+            char transition_number = (line[j]);
+            int trans_n = transition_number - '0';
+
+            j+=2;
+
+            string temp_state_symbols = "";
+
             for (; j < line.length();j+=4){
-                temp.add_transition(line[j], line[j+2]);
+                                
+                if (temp_state_symbols.find(line[j]) != temp_state_symbols.npos){
+                    return (3);
+                }
+                else {
+                    temp_state_symbols += line[j];
+                    temp.add_transition(line[j], line[j+2]);
+                }
+                // para comprobar que la transición es única por símbolo
+                // añade un vector de char donde metas los que has leído
+                // y compara a ver. si es igual, return(3)
             }
-            //cout << "ahora a ver";
-            //TIENES QUE SOBRECARGAR OPERADORES
-            //aquí haz un insert del estado en el cevtor
+            
+            if (temp.get_transitionSet().size() != trans_n) {
+                    return (5);
+            }
 
             setStates_.insert(temp);
         }
+
+
+        // si el número de estados descritos no coincide con los que figuran en el fichero
+        if (totalStates_ != setStates_.size()){
+            return(4);
+        }
         
-        cout << endl;
-        cout << "*********************" << endl;
-        cout << "DFA cargado con éxito" << endl; // ya está???¿?¿?¿?¿
-        cout << "*********************" << endl;
+        else {
+            cout << endl;
+            cout << "*********************" << endl;
+            cout << "DFA cargado con éxito" << endl;
+            cout << "*********************" << endl;
 
         return(0);
-            
-        //aquí van cosas
-        
+        }
     }
 
-    // failed opening file
+
+
+    // error al abrir archivo
     else 
         return (1);
 
@@ -86,11 +106,12 @@ void DFA::show_DFA(){
 		
         state temp_state = *i;
         
+        // imprime identificador de estado y número de transiciones
         cout << temp_state.get_stateId() << " ";
         temp_state.get_isStateFinal () ? cout << "1 " : cout << "0 "; 
         cout << temp_state.get_transitionNumber(); 
 
-        // esto es una chapuza pero si no lo haces así tira segfaults como loco
+        // para evitar segfaults al acceder a las transiciones
         set<transition> temp_transition_set = temp_state.get_transitionSet();
         set<transition>::iterator k = temp_transition_set.begin();
         // ¯\_(ツ)_/¯ /////////////////////////////////////////////////////////
@@ -112,19 +133,21 @@ void DFA::calc_death_states(){
     set<state>::iterator i = setStates_.begin();
     bool hasDeathStates = false;
     
-	for (int j = 0; j < totalStates_; j++){
+	// para cada estado comprueba si todas sus transiciones son a sí mismo
+    for (int j = 0; j < totalStates_; j++){
 		
         state temp_state = *i;
 
         char stateId = temp_state.get_stateId(); 
 
-        // esto es una chapuza pero si no lo haces así tira segfaults como loco
+        // para evitar segfaults al acceder a las transiciones
         set<transition> temp_transition_set = temp_state.get_transitionSet();
         set<transition>::iterator k = temp_transition_set.begin();
         // ¯\_(ツ)_/¯ /////////////////////////////////////////////////////////
         
         bool isDeathState = true;
-
+        
+        // si hay una transición hacia otro estado, no es de muerte
         for (int l=0; l < temp_state.get_transitionNumber() ; l++){
             transition temp_transition = *k;
             if (temp_transition.get_next_state() != stateId) {
@@ -158,9 +181,6 @@ int DFA::analyze_word(string word){
     
     char actualState = initialState_;
     bool transitionFound;
-    bool end = false;
-
-    //hasta aquí bien. El problema es el resto xDDD
 
     for (int j=0; j < word.length(); j++) {
         
@@ -170,6 +190,7 @@ int DFA::analyze_word(string word){
 
         set<state>::iterator i = setStates_.begin();
                 
+        // busca el estado actual en el set de estados y luego comprueba en las trancisiones del estado
         for (int s = 0; s < totalStates_; s++){
 		
             state temp_state = *i;
@@ -178,27 +199,26 @@ int DFA::analyze_word(string word){
 
             if (stateId == actualState) {
 
-                // esto es una chapuza pero si no lo haces así tira segfaults como loco
+                // para evitar segfaults al acceder a las transiciones
                 set<transition> temp_transition_set = temp_state.get_transitionSet();
                 set<transition>::iterator k = temp_transition_set.begin();
                 // ¯\_(ツ)_/¯ /////////////////////////////////////////////////////////
-        
+
+                //busca en las transiciones una que contenga el símbolo buscado
                 for (int l=0; l < temp_state.get_transitionNumber() ; l++){
                         
                     transition temp_transition = *k;
 
                     if (temp_transition.get_character() == word.at(j)) {
-                        //cout << "transicion" << endl;
                         actualState = temp_transition.get_next_state();
                         transitionFound = true;
-                        end = true;
                     }
                     else {
                         k++;
                     }
                 }
                
-
+                // si no ha encontrado transición, da error. Si la ha encontrado, devuelve siguiente estado
                 if (transitionFound == false){
                     cout << endl << endl << "\e[1mERROR\e[0m. Ha introducido un símbolo que no reconoce este DFA" << endl << endl;
                     return (1);
@@ -213,9 +233,10 @@ int DFA::analyze_word(string word){
                 i++;
         }
     
-    //cout << endl;
     }
-           
+
+    // una vez comprobada toda la cadena, busca en el set de estados el estado actual (final al procesarla toda)
+    // y comprueba si es de aceptación o no   
     set<state>::iterator i = setStates_.begin();
                 
     for (int j = 0; j < totalStates_; j++){
@@ -229,7 +250,7 @@ int DFA::analyze_word(string word){
             else
                 cout << endl << "\e[1mCADENA NO ACEPTADA\e[0m" << endl << endl;
         }
-    i++;   
+        i++;   
     }
     return 0;
 }
