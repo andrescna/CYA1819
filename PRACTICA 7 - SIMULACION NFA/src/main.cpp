@@ -131,7 +131,7 @@ int main(){
 
                         if (nfa_loaded == true) {
                                 cout << endl;
-                                nfa.calc_death_states();
+                                nfa.calc_important_states();
                         }
                         else  
                                 cout << endl << "\e[1mERROR\e[0m. Por favor cargue un NFA antes de usar esta opción." << endl << endl;
@@ -141,7 +141,7 @@ int main(){
 
                         if (nfa_loaded == true) {
                                 cout << endl;
-                                nfa.calc_death_states();
+                                nfa.is_DFA();
                         }
                         else  
                                 cout << endl << "\e[1mERROR\e[0m. Por favor cargue un NFA antes de usar esta opción." << endl << endl;
