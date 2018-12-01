@@ -1,4 +1,4 @@
-# Práctica #04: Simulación de autómatas finitos no deterministas
+# Práctica #07: Simulación de autómatas finitos no deterministas
 
 ## Objetivo
 
@@ -22,7 +22,7 @@ A continuación, para cada una de las transiciones, y separados por espacios en 
    * Estado destino de la transición.
 
 
-A modo de ejemplo, se muestra un NFA junto con la definición del mismo especificada mediante un fichero .nfa
+A modo de ejemplo, se muestra un NFA junto con la definición del mismo especificada mediante un fichero ***.nfa***
 
 ![Ejemplo de NFA](/doc/NFA_sim.jpg)
 
@@ -31,15 +31,20 @@ El programa deberá detectar que no haya ningún error en la definición del aut
 * Existe uno y sólo un estado inicial para el autómata.
 * Hay una línea en el fichero por cada uno de los estados que tiene el autómata. Para aquellos estados que no tengan transiciones salientes, deberemos indicar, en la línea correspondiente del fichero, que el estado en cuestión tiene cero transiciones.
 
-## Funcionamiento general del programa
+## Funcionamiento general del programa
 
 El programa principal debería ofrecer al usuario las siguientes opciones:
 
 * **Leer NFA:** al seleccionar esta opción se deberá solicitar al usuario que introduzca el nombre del fichero donde se encuentra la especificación del autómata. Tras la inicialización del NFA habrá que notificar al usuario si se produce algún error en la creación del automáta.
+
 * **Mostrar NFA:** al seleccionar esta opción se mostrará por pantalla el autómata actualmente definido (previamente leído de fichero) en nuestro programa. Para mostrar el autómata por pantalla se seguirá el formato establecido para los ficheros ***.nfa***.
+  
 * **Identificar estados de muerte:** al seleccionar esta opción se deberá mostrar por pantalla si el autómata previamente definido tiene estados de muerte y si es así, habrá que indicar cuáles son los identificadores de dichos estados de muerte.
+  
 * **Identificar estados importantes:** al seleccionar esta opción se deberá mostrar por pantalla el conjunto de estados importantes y el conjunto de estados no importantes del NFA. Hay que recordar que en un NFA decimos que un estado es importante si tiene al menos una transición saliente etiquetada con uno de los símbolos del alfabeto, o bien, si es un estado de aceptación. Es decir, los estados no importantes serán aquellos que no son de aceptación y sólo tienen transiciones salientes etiquetadas con epsilon.
+  
 * **Es DFA:** comprobar si el autómata finito cargado desde fichero es un DFA o no. Tener en cuenta que los DFAs tienen una y sola una transición, desde cada estado, para cada uno de los símbolos del alfabeto. Hay que tener en cuenta que aunque el autómata finito leído desde fichero sea un DFA, se podrán aplicar el resto de opciones del menú de la misma forma que si se hubiera tratado de un NFA que no es DFA.
+  
 * **Analizar cadena:** al seleccionar esta opción se deberá solicitar al usuario que introduzca una cadena. Para la cadena indicada por el usuario se deberá determinar si es aceptada o no por el autómata actualmente definido. Al igual que ocurre con las opciones anteriores, esta opción tampoco se podrá ejecutar si no se ha inicializado previamente un autómata. El formato de la traza a mostrar por pantalla será el siguiente: 
 
 <pre>Cadena de entrada: ___________<br><br>Camino 1<br>Estado actual    Entrada    Siguiente estado

@@ -31,10 +31,16 @@ int main(){
 
     bool end_loop = false;
     bool nfa_loaded = false;
+
+
+    int a = nfa.read_NFA(default_filename);
+    nfa_loaded = true;
+
     
     do {
         
-        bool end_loop2 = false;
+        //bool end_loop2 = false;
+        bool end_loop2 = true;
  
         cout << endl;
         cout << "—————————————————————————————————————————————" << endl;
@@ -141,7 +147,14 @@ int main(){
 
                         if (nfa_loaded == true) {
                                 cout << endl;
-                                nfa.is_DFA();
+
+                                int is_DFA_result= nfa.is_DFA();
+                                
+                                if (is_DFA_result == 0 ){
+                                        cout << endl << "El automata cargado \e[1mES UN DFA\e[0m" << endl;
+                                        break;
+                                }
+
                         }
                         else  
                                 cout << endl << "\e[1mERROR\e[0m. Por favor cargue un NFA antes de usar esta opción." << endl << endl;
@@ -178,7 +191,7 @@ int main(){
         }
 
         // For doing more operatios or exit the program
-
+        /*
         while (end_loop2==false){
 
                 cout << "¿Desea realizar otra operación (y/n)?" << endl << ">";
@@ -202,7 +215,7 @@ int main(){
                                 cout << endl << "\e[1mERROR\e[0m. Opción no válida." << endl;
                         break;
                 }
-        }
+        }*/
 
     }while (end_loop == false);
     

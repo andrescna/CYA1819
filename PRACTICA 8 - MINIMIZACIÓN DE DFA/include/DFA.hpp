@@ -7,25 +7,22 @@
 #include "state.hpp"
 
 
-class NFA{
+class DFA{
 
     private:
 
     int totalStates_; 
     char initialState_;
     set<state> setStates_;
-    set<char> alphabet_;          //METEMOS ALFABETO
 
     public:
 
-    NFA();
-    ~NFA();
+    DFA();
+    ~DFA();
     
-    int read_NFA(string file);
-    void show_NFA();
+    int read_DFA(string file);
+    void show_DFA();
     void calc_death_states();
-    void calc_important_states();
-    int is_DFA();
     int analyze_word(string word); 
 
 };
