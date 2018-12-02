@@ -3,6 +3,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <vector>
 
 #include "state.hpp"
 
@@ -25,7 +26,7 @@ class NFA{
     void show_NFA();
     void calc_death_states();
     void calc_important_states();
-    int is_DFA();
-    int analyze_word(string word); 
+    void is_DFA();
+    void analyze_word(string word); 
 
 };

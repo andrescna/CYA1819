@@ -230,7 +230,7 @@ void NFA::calc_important_states(){
     }
 }
 
-int NFA::is_DFA(){
+void NFA::is_DFA(){
     
     set<state>::iterator i = setStates_.begin();
     
@@ -248,7 +248,7 @@ int NFA::is_DFA(){
         //ERROR: si el estado tiene más/menos transiciones que símbolos del alfabeto no es un DFA
         if (temp_alphabet.size() != temp_state.get_transitionNumber()){
             cout << "\e[1mNO ES UN DFA\e[0m. Nº de transiciones inadecuado en alguno de los estados." << endl;
-            return 1;
+            return;
         }
 
         // para evitar segfaults al acceder a las transiciones
@@ -263,7 +263,7 @@ int NFA::is_DFA(){
             // ERROR: si tiene una transición con epsilon, no es un DFA
             if (temp_transition.get_character() == '~'){
                 cout << "\e[1mNO ES UN DFA\e[0m. Tiene al menos una epsilon-transición" << endl;
-                return 1;
+                return;
             }
             else {
 
@@ -274,38 +274,82 @@ int NFA::is_DFA(){
                 // ERROR: si no está el símbolo en el alfabeto es que hay varias transiciones para el mismo => no es DFA
                 else {
                     cout << "\e[1mNO ES UN DFA\e[0m. Varias transiciones para un mismo símbolo en un estado" << endl;
-                    return 1;
+                    return;
                 }
             }
         }
         i++;
     }
-    return 0;
+    cout << "El automata cargado \e[1mES UN DFA\e[0m" << endl;
+    return;
 }
 
-                /////////////////////////////////// TO DO ///////
 
-// ESTA SÍ HAY QUE TOCARLA. MUCHO
-int NFA::analyze_word(string word){
+void NFA::analyze_word(string word){
 
     cout << endl;
     cout << "——————————————————" << endl;
     cout << "Cadena de entrada: " << word << endl;
     cout << "——————————————————" << endl << endl;
-    cout << "Est. actual\tEntrada\t\tEst. siguiente" << endl;
-    
-    char actualState = initialState_;
-    bool transitionFound;
 
-    for (int j=0; j < word.length(); j++) {
-        
-        cout << actualState << "\t\t" << word.at(j) << "\t\t";
+    int rec_num=1;
+    int& recorrido_number = rec_num;
 
-        transitionFound = false;
+    vector<char> state_vector;
+	vector<string> analyzed_word;
+	vector<string> path_set;
 
-        set<state>::iterator i = setStates_.begin();
+	state_vector.push_back(initialState_);
+	analyzed_word.push_back(word);
+	path_set.push_back("");
+
+	bool transitionFound;
+
+	while (state_vector.size() > 0){
+		
+        char actualState = state_vector.at(state_vector.size() - 1);
+		string subWord = analyzed_word.at(analyzed_word.size() - 1);
+		string path = path_set.at(path_set.size() - 1);
+
+		state_vector.pop_back();
+		analyzed_word.pop_back();
+		path_set.pop_back();
+		
+        //si ha acabado de procesar la cadena
+		if (subWord == ""){
+			
+            set<state>::iterator i = setStates_.begin();
                 
-        // busca el estado actual en el set de estados y luego comprueba en las trancisiones del estado
+            for (int j = 0; j < totalStates_; j++){
+		
+                state temp_state = *i;
+
+                if (temp_state.get_stateId() == actualState){
+                    if (temp_state.get_isStateFinal() == true){
+                        cout << "Recorrido " << recorrido_number << endl << endl;
+                        cout << "Est. actual\tEntrada\t\tEst. siguiente" << endl;
+                        cout << path << endl;
+                        cout << endl << "***************";
+                        cout << endl << "\e[1mCADENA ACEPTADA\e[0m"; 
+                        cout << endl << "***************" << endl;
+                        return;
+                    }
+                    else {
+                        cout << "Recorrido " << recorrido_number << endl << endl;
+                        cout << "Est. actual\tEntrada\t\tEst. siguiente" << endl;
+                        cout << path << endl;
+                        cout << endl << "\e[1mCADENA NO ACEPTADA\e[0m" << endl << endl;
+                        cout << "——————————————————————————————————————" << endl << endl;
+                        recorrido_number++;
+                    }
+                }
+                i++;   
+            }    
+		}
+
+		set<state>::iterator i = setStates_.begin();
+                
+        // busca el estado actual en el set de estados y luego comprueba en las transiciones del estado
         for (int s = 0; s < totalStates_; s++){
 		
             state temp_state = *i;
@@ -314,6 +358,8 @@ int NFA::analyze_word(string word){
 
             if (stateId == actualState) {
 
+                transitionFound = false;
+                
                 // para evitar segfaults al acceder a las transiciones
                 set<transition> temp_transition_set = temp_state.get_transitionSet();
                 set<transition>::iterator k = temp_transition_set.begin();
@@ -324,49 +370,41 @@ int NFA::analyze_word(string word){
                         
                     transition temp_transition = *k;
 
-                    if (temp_transition.get_character() == word.at(j)) {
-                        actualState = temp_transition.get_next_state();
+                    if (temp_transition.get_character() == '~') {
                         transitionFound = true;
+                        string recorridoAux = path + actualState + "\t\t~\t\t" + temp_transition.get_next_state() + "\n"; 
+
+				        state_vector.push_back(temp_transition.get_next_state());
+				        analyzed_word.push_back(subWord);	
+				        path_set.push_back(recorridoAux);
+
                     }
-                    else {
-                        k++;
+
+                    if (temp_transition.get_character() == subWord[0]) {
+                        transitionFound = true;
+                        string recorridoAux = path + actualState + "\t\t" + subWord[0] + "\t\t" + temp_transition.get_next_state() + "\n";
+
+				        state_vector.push_back(temp_transition.get_next_state());
+				        analyzed_word.push_back(subWord.substr(1));
+				        path_set.push_back(recorridoAux);
                     }
+                    k++; 
                 }
                
-                // si no ha encontrado transición, da error. Si la ha encontrado, devuelve siguiente estado
-                if (transitionFound == false){
-                    cout << endl << endl << "\e[1mERROR\e[0m. Ha introducido un símbolo que no reconoce este NFA" << endl << endl;
-                    return (1);
-                }
-                else {
-                    cout << actualState << endl;
-                }
-
+                // si no encuentra ninguna transición para este símbolo ¿¿??
+		        if ((transitionFound == false) && (subWord != "")){
+			        cout << "Recorrido " << recorrido_number << endl << endl;
+                    cout << "Est. actual\tEntrada\t\tEst. siguiente" << endl;
+                    cout << path << endl;
+                    cout << endl << "\e[1mERROR\e[0m. Ha introducido un símbolo que no reconoce este NFA" << endl;
+                    cout << endl << "\e[1mCADENA NO ACEPTADA\e[0m" << endl << endl;
+			        return;
+                    recorrido_number++;
+		        }
                 s = totalStates_;
             }        
             else 
                 i++;
         }
-    
     }
-
-    // una vez comprobada toda la cadena, busca en el set de estados el estado actual (final al procesarla toda)
-    // y comprueba si es de aceptación o no   
-    set<state>::iterator i = setStates_.begin();
-                
-    for (int j = 0; j < totalStates_; j++){
-		
-        state temp_state = *i;
-
-        if (temp_state.get_stateId() == actualState){
-            if (temp_state.get_isStateFinal() == true){
-                cout << endl << "\e[1mCADENA ACEPTADA\e[0m" << endl << endl;
-            }
-            else
-                cout << endl << "\e[1mCADENA NO ACEPTADA\e[0m" << endl << endl;
-        }
-        i++;   
-    }
-    return 0;
 }
-

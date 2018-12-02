@@ -32,9 +32,10 @@ int main(){
     bool end_loop = false;
     bool nfa_loaded = false;
 
-
+                // para debug
     int a = nfa.read_NFA(default_filename);
     nfa_loaded = true;
+                // para debug
 
     
     do {
@@ -60,7 +61,7 @@ int main(){
 
         switch (option[0]){
 
-                case '1': // leer dfa
+                case '1': // leer nfa
                                  
                         if (nfa_loaded == true) {
                                 cout << endl << "\e[1mERROR\e[0m. DFA ya cargado" << endl << endl;
@@ -130,9 +131,6 @@ int main(){
                                 cout << endl << "\e[1mERROR\e[0m. Por favor cargue un NFA antes de usar esta opción." << endl << endl;
                         break;
 
-
-                                        /////////////////////////  TO DO //////////////////////////
-
                 case '4': //estados importantes
 
                         if (nfa_loaded == true) {
@@ -147,14 +145,8 @@ int main(){
 
                         if (nfa_loaded == true) {
                                 cout << endl;
-
-                                int is_DFA_result= nfa.is_DFA();
-                                
-                                if (is_DFA_result == 0 ){
-                                        cout << endl << "El automata cargado \e[1mES UN DFA\e[0m" << endl;
-                                        break;
-                                }
-
+                                nfa.is_DFA();
+                                break;
                         }
                         else  
                                 cout << endl << "\e[1mERROR\e[0m. Por favor cargue un NFA antes de usar esta opción." << endl << endl;
