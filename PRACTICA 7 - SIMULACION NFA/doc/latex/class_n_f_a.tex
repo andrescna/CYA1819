@@ -1,0 +1,110 @@
+\hypertarget{class_n_f_a}{}\section{Referencia de la Clase N\+FA}
+\label{class_n_f_a}\index{N\+FA@{N\+FA}}
+
+
+Implementación de un \mbox{\hyperlink{class_n_f_a}{N\+FA}}.  
+
+
+
+
+{\ttfamily \#include $<$N\+F\+A.\+hpp$>$}
+
+\subsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_n_f_a_a6a4e79c90998ebb75e7b6ce280b14bed}\label{class_n_f_a_a6a4e79c90998ebb75e7b6ce280b14bed}} 
+\mbox{\hyperlink{class_n_f_a_a6a4e79c90998ebb75e7b6ce280b14bed}{N\+FA}} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_n_f_a_a48f9c98fbfd76cd5bb89a71a9bb006f9}\label{class_n_f_a_a48f9c98fbfd76cd5bb89a71a9bb006f9}} 
+\mbox{\hyperlink{class_n_f_a_a48f9c98fbfd76cd5bb89a71a9bb006f9}{$\sim$\+N\+FA}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_n_f_a_a694ab54b829fb1d45ec8bb752a0c31a0}{read\+\_\+\+N\+FA}} (string filename)
+\begin{DoxyCompactList}\small\item\em Leer \mbox{\hyperlink{class_n_f_a}{N\+FA}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_n_f_a_a53a6b0ddcfb706dc4725cf2a6a8f2388}{show\+\_\+\+N\+FA}} ()
+\begin{DoxyCompactList}\small\item\em Mostrar \mbox{\hyperlink{class_n_f_a}{N\+FA}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_n_f_a_a6a32ddeb3c446ff0f31f09f3d04b1582}{calc\+\_\+death\+\_\+states}} ()
+\begin{DoxyCompactList}\small\item\em Calcular estados de muerte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_n_f_a_addc2cae46439f77116f37230ec8a90d0}{calc\+\_\+important\+\_\+states}} ()
+\begin{DoxyCompactList}\small\item\em Calcular estados importantes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_n_f_a_a36415a14d2ffcd179ff3a2f96b80da0d}{is\+\_\+\+D\+FA}} ()
+\begin{DoxyCompactList}\small\item\em ¿\+Es un D\+FA?. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_n_f_a_a7cad5fd6ba765d9d8099793421100234}{analyze\+\_\+word}} (string word)
+\begin{DoxyCompactList}\small\item\em Analizar cadena. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Implementación de un \mbox{\hyperlink{class_n_f_a}{N\+FA}}. 
+
+Esta clase implementa un Autómata Finito No determinista (\mbox{\hyperlink{class_n_f_a}{N\+FA}}), que formalmente está formado por un conjunto de estados, un estado inicial, un conjunto de estados finales o de aceptación, un alfabeto y una función de transición. En este caso la implementación se lleva a cabo definiendo un número total de estados, un estado inicial, un conjunto de estados implementado como un std\+::set y un alfabeto implementado como un std\+::char.
+
+Además se definen los métodos necesarios para llevar a cabo las operaciones que se nos piden en los requisitos\+: leer, mostrar, calcular los estados de muerte, calcular estados importantes, comprobar si es un D\+FA y analizar una cadena para ver si el \mbox{\hyperlink{class_n_f_a}{N\+FA}} la reconoce. 
+
+\subsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{class_n_f_a_a7cad5fd6ba765d9d8099793421100234}\label{class_n_f_a_a7cad5fd6ba765d9d8099793421100234}} 
+\index{N\+FA@{N\+FA}!analyze\+\_\+word@{analyze\+\_\+word}}
+\index{analyze\+\_\+word@{analyze\+\_\+word}!N\+FA@{N\+FA}}
+\subsubsection{\texorpdfstring{analyze\+\_\+word()}{analyze\_word()}}
+{\footnotesize\ttfamily void N\+F\+A\+::analyze\+\_\+word (\begin{DoxyParamCaption}\item[{string}]{word }\end{DoxyParamCaption})}
+
+
+
+Analizar cadena. 
+
+Para una cadena introducida por el usuario muestra el conjunto de recorridos posibles que puede seguir el \mbox{\hyperlink{class_n_f_a}{N\+FA}} con dicha cadena, además de una decisión final. Esta será de aceptación si hay al menos un camino para el que la cadena haya sido aceptada, y de no aceptación en otro caso. \mbox{\Hypertarget{class_n_f_a_a6a32ddeb3c446ff0f31f09f3d04b1582}\label{class_n_f_a_a6a32ddeb3c446ff0f31f09f3d04b1582}} 
+\index{N\+FA@{N\+FA}!calc\+\_\+death\+\_\+states@{calc\+\_\+death\+\_\+states}}
+\index{calc\+\_\+death\+\_\+states@{calc\+\_\+death\+\_\+states}!N\+FA@{N\+FA}}
+\subsubsection{\texorpdfstring{calc\+\_\+death\+\_\+states()}{calc\_death\_states()}}
+{\footnotesize\ttfamily void N\+F\+A\+::calc\+\_\+death\+\_\+states (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calcular estados de muerte. 
+
+Calcula si el \mbox{\hyperlink{class_n_f_a}{N\+FA}} tiene estados de muerte (que no tienen transiciones salientes). \mbox{\Hypertarget{class_n_f_a_addc2cae46439f77116f37230ec8a90d0}\label{class_n_f_a_addc2cae46439f77116f37230ec8a90d0}} 
+\index{N\+FA@{N\+FA}!calc\+\_\+important\+\_\+states@{calc\+\_\+important\+\_\+states}}
+\index{calc\+\_\+important\+\_\+states@{calc\+\_\+important\+\_\+states}!N\+FA@{N\+FA}}
+\subsubsection{\texorpdfstring{calc\+\_\+important\+\_\+states()}{calc\_important\_states()}}
+{\footnotesize\ttfamily void N\+F\+A\+::calc\+\_\+important\+\_\+states (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calcular estados importantes. 
+
+Calcula los estados importantes de un \mbox{\hyperlink{class_n_f_a}{N\+FA}}. Los estados importantes son los que tienen al menos una transición con un símbolo del alfabeto distinto a epsilon O son estados de aceptación.
+
+Una vez calculados muestra ambos conjuntos (el de importantes y no importantes) o avisa de que todos los estados son importantes. \mbox{\Hypertarget{class_n_f_a_a36415a14d2ffcd179ff3a2f96b80da0d}\label{class_n_f_a_a36415a14d2ffcd179ff3a2f96b80da0d}} 
+\index{N\+FA@{N\+FA}!is\+\_\+\+D\+FA@{is\+\_\+\+D\+FA}}
+\index{is\+\_\+\+D\+FA@{is\+\_\+\+D\+FA}!N\+FA@{N\+FA}}
+\subsubsection{\texorpdfstring{is\+\_\+\+D\+F\+A()}{is\_DFA()}}
+{\footnotesize\ttfamily void N\+F\+A\+::is\+\_\+\+D\+FA (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+¿\+Es un D\+FA?. 
+
+Calcula si el \mbox{\hyperlink{class_n_f_a}{N\+FA}} en memoria es un D\+FA (es decir, que tiene una y solo una transición para cada simbolo del alfabeto y además no tiene ninguna epsilon-\/transición). \mbox{\Hypertarget{class_n_f_a_a694ab54b829fb1d45ec8bb752a0c31a0}\label{class_n_f_a_a694ab54b829fb1d45ec8bb752a0c31a0}} 
+\index{N\+FA@{N\+FA}!read\+\_\+\+N\+FA@{read\+\_\+\+N\+FA}}
+\index{read\+\_\+\+N\+FA@{read\+\_\+\+N\+FA}!N\+FA@{N\+FA}}
+\subsubsection{\texorpdfstring{read\+\_\+\+N\+F\+A()}{read\_NFA()}}
+{\footnotesize\ttfamily int N\+F\+A\+::read\+\_\+\+N\+FA (\begin{DoxyParamCaption}\item[{string}]{filename }\end{DoxyParamCaption})}
+
+
+
+Leer \mbox{\hyperlink{class_n_f_a}{N\+FA}}. 
+
+Lee un \mbox{\hyperlink{class_n_f_a}{N\+FA}} que recibe desde un archivo «filename» y lo almacena en memoria para operar con él. \mbox{\Hypertarget{class_n_f_a_a53a6b0ddcfb706dc4725cf2a6a8f2388}\label{class_n_f_a_a53a6b0ddcfb706dc4725cf2a6a8f2388}} 
+\index{N\+FA@{N\+FA}!show\+\_\+\+N\+FA@{show\+\_\+\+N\+FA}}
+\index{show\+\_\+\+N\+FA@{show\+\_\+\+N\+FA}!N\+FA@{N\+FA}}
+\subsubsection{\texorpdfstring{show\+\_\+\+N\+F\+A()}{show\_NFA()}}
+{\footnotesize\ttfamily void N\+F\+A\+::show\+\_\+\+N\+FA (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mostrar \mbox{\hyperlink{class_n_f_a}{N\+FA}}. 
+
+Muestra por consola el \mbox{\hyperlink{class_n_f_a}{N\+FA}} almacenado en memoria. 
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+include/N\+F\+A.\+hpp\item 
+src/N\+F\+A.\+cpp\end{DoxyCompactItemize}

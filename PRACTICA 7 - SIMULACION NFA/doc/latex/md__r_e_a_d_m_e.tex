@@ -1,0 +1,94 @@
+\subsection*{Objetivo}
+
+Esta práctica consistirá en la realización de un programa escrito en C++ que lea desde un fichero las especificaciones de un autómata finito no determinista (\mbox{\hyperlink{class_n_f_a}{N\+FA}}) y, a continuación, simule el comportamiento del autómata para una cadena que se dé como entrada. Se puede considerar un \mbox{\hyperlink{class_n_f_a}{N\+FA}} como una modificación de un D\+FA en el que se permiten cero, una o varias transiciones desde un estado con un símbolo del alfabeto de entrada. Además, otra diferencia de los N\+F\+As con respecto a los D\+F\+As es que los N\+F\+As pueden tener transiciones vacías (transiciones etiquetadas con la cadena vacía), permitiendo al autómata transitar de un estado a otro sin necesidad de entrada, esto es, sin consumir símbolos de la cadena de entrada. El no determinismo viene dado porque el autómata puede transitar con una misma entrada hacia un conjunto de diferentes estados. Este conjunto de estados podría incluso ser vacío.
+
+\subsection*{Fichero para la definición autómatas finitos no determinista}
+
+Un autómata finito no determinista (\mbox{\hyperlink{class_n_f_a}{N\+FA}}) vendrá definido en un fichero de texto con extensión {\itshape {\bfseries .nfa}}. Un fichero {\itshape {\bfseries .nfa}} deberá tener el siguiente formato\+:
+
+
+\begin{DoxyItemize}
+\item Línea 1\+: Número total de estados del \mbox{\hyperlink{class_n_f_a}{N\+FA}}
+\item Línea 2\+: Estado de arranque del \mbox{\hyperlink{class_n_f_a}{N\+FA}}
+\end{DoxyItemize}
+
+A continuación vendrá una línea para cada uno de los estados. Cada línea contendrá los siguientes números separados entre sí por espacios en blanco\+:
+
+
+\begin{DoxyItemize}
+\item Número identificador del estado. Los estados del autómata se representarán mediante números enteros sin signo. La numeración de los estados corresponderá a los primeros números naturales comenzando por 0.
+\item Un 1 si se trata de un estado de aceptación y un 0 si se trata de un estado de no aceptación.
+\item Número de transiciones que posee el estado.
+\end{DoxyItemize}
+
+A continuación, para cada una de las transiciones, y separados por espacios en blanco, se detallará la información siguiente\+:
+\begin{DoxyItemize}
+\item Símbolo de entrada necesario para que se produzca la transición. Para representar la cadena vacía (el no consumir símbolo de la entrada) se utilizará el carácter $\sim$ (código A\+S\+C\+II 126).
+\item Estado destino de la transición.
+\end{DoxyItemize}
+
+A modo de ejemplo, se muestra un \mbox{\hyperlink{class_n_f_a}{N\+FA}} junto con la definición del mismo especificada mediante un fichero {\itshape {\bfseries .nfa}}
+
+
+
+El programa deberá detectar que no haya ningún error en la definición del autómata. Esto es, habría que analizar que se cumplen las siguientes condiciones\+:
+
+
+\begin{DoxyItemize}
+\item Existe uno y sólo un estado inicial para el autómata.
+\item Hay una línea en el fichero por cada uno de los estados que tiene el autómata. Para aquellos estados que no tengan transiciones salientes, deberemos indicar, en la línea correspondiente del fichero, que el estado en cuestión tiene cero transiciones.
+\end{DoxyItemize}
+
+\subsection*{Funcionamiento general del programa}
+
+El programa principal debería ofrecer al usuario las siguientes opciones\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries Leer \mbox{\hyperlink{class_n_f_a}{N\+FA}}\+:} al seleccionar esta opción se deberá solicitar al usuario que introduzca el nombre del fichero donde se encuentra la especificación del autómata. Tras la inicialización del \mbox{\hyperlink{class_n_f_a}{N\+FA}} habrá que notificar al usuario si se produce algún error en la creación del automáta.
+\item {\bfseries Mostrar \mbox{\hyperlink{class_n_f_a}{N\+FA}}\+:} al seleccionar esta opción se mostrará por pantalla el autómata actualmente definido (previamente leído de fichero) en nuestro programa. Para mostrar el autómata por pantalla se seguirá el formato establecido para los ficheros {\itshape {\bfseries .nfa}}.
+\item {\bfseries Identificar estados de muerte\+:} al seleccionar esta opción se deberá mostrar por pantalla si el autómata previamente definido tiene estados de muerte y si es así, habrá que indicar cuáles son los identificadores de dichos estados de muerte.
+\item {\bfseries Identificar estados importantes\+:} al seleccionar esta opción se deberá mostrar por pantalla el conjunto de estados importantes y el conjunto de estados no importantes del \mbox{\hyperlink{class_n_f_a}{N\+FA}}. Hay que recordar que en un \mbox{\hyperlink{class_n_f_a}{N\+FA}} decimos que un estado es importante si tiene al menos una transición saliente etiquetada con uno de los símbolos del alfabeto, o bien, si es un estado de aceptación. Es decir, los estados no importantes serán aquellos que no son de aceptación y sólo tienen transiciones salientes etiquetadas con epsilon.
+\item {\bfseries Es D\+FA\+:} comprobar si el autómata finito cargado desde fichero es un D\+FA o no. Tener en cuenta que los D\+F\+As tienen una y sola una transición, desde cada estado, para cada uno de los símbolos del alfabeto. Hay que tener en cuenta que aunque el autómata finito leído desde fichero sea un D\+FA, se podrán aplicar el resto de opciones del menú de la misma forma que si se hubiera tratado de un \mbox{\hyperlink{class_n_f_a}{N\+FA}} que no es D\+FA.
+\item {\bfseries Analizar cadena\+:} al seleccionar esta opción se deberá solicitar al usuario que introduzca una cadena. Para la cadena indicada por el usuario se deberá determinar si es aceptada o no por el autómata actualmente definido. Al igual que ocurre con las opciones anteriores, esta opción tampoco se podrá ejecutar si no se ha inicializado previamente un autómata. El formato de la traza a mostrar por pantalla será el siguiente\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyPre}Cadena de entrada: \_\_\_\_\_\_\_\_\_\_\_<br>~\newline
+Camino 1~\newline
+Estado actual    Entrada    Siguiente estado
+X                Y          Z
+X                Y          Z
+X                Y          Z
+Cadena de entrada ACEPTADA / NO ACEPTADA<br>~\newline
+Camino 2 ~\newline
+Estado actual    Entrada    Siguiente estado~\newline
+X                Y          Z~\newline
+X                Y          Z~\newline
+X                Y          Z~\newline
+Cadena de entrada ACEPTADA / NO ACEPTADA<br>~\newline
+...~\newline
+~\newline
+Camino N~\newline
+Estado actual    Entrada    Siguiente estado~\newline
+X                Y          Z~\newline
+X                Y          Z~\newline
+X                Y          Z~\newline
+Cadena de entrada ACEPTADA / NO ACEPTADA<br>~\newline
+Decisión final:~\newline
+Cadena de entrada ACEPTADA / NO ACEPTADA~\newline
+\end{DoxyPre}
+
+
+Tal y como se indica en las líneas anteriores, en primer lugar se deberá mostrar la cadena de entrada. A continuación, y teniendo en cuenta que se trata de N\+F\+As, la traza deberá recoger todos los posibles caminos que se podrían seguir para aceptar o rechazar la cadena de entrada. Para cada uno de los posibles caminos, se indicará cómo va transitando de un estado a otro el autómata según va leyendo la cadena de entrada, indicando en cada caso si por el camino en cuestión se acepta o no la cadena. Finalmente, se deberá indicar la decisión final del autómata mostrando el mensaje {\itshape {\bfseries “\+Cadena de entrada A\+C\+E\+P\+T\+A\+D\+A”}} si la cadena de entrada es aceptada por el autómata o el mensaje {\itshape {\bfseries “\+Cadena de entrada NO A\+C\+E\+P\+T\+A\+D\+A”}} si la cadena de entrada no es aceptada por el autómata. Cabe destacar que, desde que se encuentre un camino que acepte la cadena de entrada analizada, la decisión final del \mbox{\hyperlink{class_n_f_a}{N\+FA}} será la de \char`\"{}aceptar de la cadena de entrada\char`\"{}.
+
+\subsection*{Detalles de implementación}
+
+
+\begin{DoxyItemize}
+\item Para la implementación de esta práctica es conveniente partir del código desarrollado en la práctica anterior para la simulación de autómatas finitos deterministas.
+\item Se deberá definir una clase \char`\"{}\+Estado\char`\"{} que agrupe las características correspondientes a los estados de un autómata y las funcionalidades asociadas a los mismos.
+\item Se deberá definir una clase \char`\"{}\+N\+F\+A\char`\"{} que implemente las características de los autómatas finitos no deterministas.
+\item Se requerirá el uso de \href{https://stackoverflow.com/questions/2481269/how-to-make-a-simple-c-makefile}{\tt Makefiles} para compilar los códigos.
+\item Documentación\+: se requerirá un mínimo de documentación para los códigos desarrollados, por lo menos documentar las cabeceras de las clases y los métodos más importantes. Vean referencias en estos Tips para documentar códigos utilizando \href{http://www.stack.nl/~dimitri/doxygen/}{\tt Doxygen} 
+\end{DoxyItemize}

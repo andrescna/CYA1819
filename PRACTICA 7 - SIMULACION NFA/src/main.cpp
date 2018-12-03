@@ -1,8 +1,14 @@
-//// Andrés Concepción Afonso
-//// CYA 2018-19
+/**
+@file main.cpp
 
-/// PRACTICA 7 - SIMULADOR DFA ///
-/// Este simula un autómata finito determinista o DFA ///
+@mainpage
+
+CYA 2018-19.
+PRACTICA 7 - SIMULADOR NFA.
+
+@author Andrés Concepción Afonso
+@date 03/12/2018
+*/
 
 #include "NFA.hpp"
 
@@ -11,6 +17,7 @@
 
 using namespace std;
 
+/*! Programa principal */
 
 int main(){
     
@@ -152,10 +159,6 @@ int main(){
                                 cout << endl << "\e[1mERROR\e[0m. Por favor cargue un NFA antes de usar esta opción." << endl << endl;
                         break;
 
-
-
-
-                                        //////////////////////////////////////////////////////////
 
                 case '6':  //calcular cadena
 

@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulador NFA: Práctica #07: Simulación de autómatas finitos no deterministas</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Simulador NFA
+   </div>
+   <div id="projectbrief">Simula el comportamiento de un NFA</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Práctica #07: Simulación de autómatas finitos no deterministas </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h2>Objetivo</h2>
+<p>Esta práctica consistirá en la realización de un programa escrito en C++ que lea desde un fichero las especificaciones de un autómata finito no determinista (<a class="el" href="class_n_f_a.html" title="Implementación de un NFA. ">NFA</a>) y, a continuación, simule el comportamiento del autómata para una cadena que se dé como entrada. Se puede considerar un <a class="el" href="class_n_f_a.html" title="Implementación de un NFA. ">NFA</a> como una modificación de un DFA en el que se permiten cero, una o varias transiciones desde un estado con un símbolo del alfabeto de entrada. Además, otra diferencia de los NFAs con respecto a los DFAs es que los NFAs pueden tener transiciones vacías (transiciones etiquetadas con la cadena vacía), permitiendo al autómata transitar de un estado a otro sin necesidad de entrada, esto es, sin consumir símbolos de la cadena de entrada. El no determinismo viene dado porque el autómata puede transitar con una misma entrada hacia un conjunto de diferentes estados. Este conjunto de estados podría incluso ser vacío.</p>
+<h2>Fichero para la definición autómatas finitos no determinista</h2>
+<p>Un autómata finito no determinista (<a class="el" href="class_n_f_a.html" title="Implementación de un NFA. ">NFA</a>) vendrá definido en un fichero de texto con extensión <em><b>.nfa</b></em>. Un fichero <em><b>.nfa</b></em> deberá tener el siguiente formato:</p>
+<ul>
+<li>Línea 1: Número total de estados del <a class="el" href="class_n_f_a.html" title="Implementación de un NFA. ">NFA</a></li>
+<li>Línea 2: Estado de arranque del <a class="el" href="class_n_f_a.html" title="Implementación de un NFA. ">NFA</a></li>
+</ul>
+<p>A continuación vendrá una línea para cada uno de los estados. Cada línea contendrá los siguientes números separados entre sí por espacios en blanco:</p>
+<ul>
+<li>Número identificador del estado. Los estados del autómata se representarán mediante números enteros sin signo. La numeración de los estados corresponderá a los primeros números naturales comenzando por 0.</li>
+<li>Un 1 si se trata de un estado de aceptación y un 0 si se trata de un estado de no aceptación.</li>
+<li>Número de transiciones que posee el estado.</li>
+</ul>
+<p>A continuación, para cada una de las transiciones, y separados por espacios en blanco, se detallará la información siguiente:</p><ul>
+<li>Símbolo de entrada necesario para que se produzca la transición. Para representar la cadena vacía (el no consumir símbolo de la entrada) se utilizará el carácter ~ (código ASCII 126).</li>
+<li>Estado destino de la transición.</li>
+</ul>
+<p>A modo de ejemplo, se muestra un <a class="el" href="class_n_f_a.html" title="Implementación de un NFA. ">NFA</a> junto con la definición del mismo especificada mediante un fichero <em><b>.nfa</b></em></p>
+<div class="image">
+<img src="/doc/NFA_sim.jpg" alt="Ejemplo de NFA"/>
+</div>
+<p>El programa deberá detectar que no haya ningún error en la definición del autómata. Esto es, habría que analizar que se cumplen las siguientes condiciones:</p>
+<ul>
+<li>Existe uno y sólo un estado inicial para el autómata.</li>
+<li>Hay una línea en el fichero por cada uno de los estados que tiene el autómata. Para aquellos estados que no tengan transiciones salientes, deberemos indicar, en la línea correspondiente del fichero, que el estado en cuestión tiene cero transiciones.</li>
+</ul>
+<h2>Funcionamiento general del programa</h2>
+<p>El programa principal debería ofrecer al usuario las siguientes opciones:</p>
+<ul>
+<li><b>Leer <a class="el" href="class_n_f_a.html" title="Implementación de un NFA. ">NFA</a>:</b> al seleccionar esta opción se deberá solicitar al usuario que introduzca el nombre del fichero donde se encuentra la especificación del autómata. Tras la inicialización del <a class="el" href="class_n_f_a.html" title="Implementación de un NFA. ">NFA</a> habrá que notificar al usuario si se produce algún error en la creación del automáta.</li>
+<li><b>Mostrar <a class="el" href="class_n_f_a.html" title="Implementación de un NFA. ">NFA</a>:</b> al seleccionar esta opción se mostrará por pantalla el autómata actualmente definido (previamente leído de fichero) en nuestro programa. Para mostrar el autómata por pantalla se seguirá el formato establecido para los ficheros <em><b>.nfa</b></em>.</li>
+<li><b>Identificar estados de muerte:</b> al seleccionar esta opción se deberá mostrar por pantalla si el autómata previamente definido tiene estados de muerte y si es así, habrá que indicar cuáles son los identificadores de dichos estados de muerte.</li>
+<li><b>Identificar estados importantes:</b> al seleccionar esta opción se deberá mostrar por pantalla el conjunto de estados importantes y el conjunto de estados no importantes del <a class="el" href="class_n_f_a.html" title="Implementación de un NFA. ">NFA</a>. Hay que recordar que en un <a class="el" href="class_n_f_a.html" title="Implementación de un NFA. ">NFA</a> decimos que un estado es importante si tiene al menos una transición saliente etiquetada con uno de los símbolos del alfabeto, o bien, si es un estado de aceptación. Es decir, los estados no importantes serán aquellos que no son de aceptación y sólo tienen transiciones salientes etiquetadas con epsilon.</li>
+<li><b>Es DFA:</b> comprobar si el autómata finito cargado desde fichero es un DFA o no. Tener en cuenta que los DFAs tienen una y sola una transición, desde cada estado, para cada uno de los símbolos del alfabeto. Hay que tener en cuenta que aunque el autómata finito leído desde fichero sea un DFA, se podrán aplicar el resto de opciones del menú de la misma forma que si se hubiera tratado de un <a class="el" href="class_n_f_a.html" title="Implementación de un NFA. ">NFA</a> que no es DFA.</li>
+<li><b>Analizar cadena:</b> al seleccionar esta opción se deberá solicitar al usuario que introduzca una cadena. Para la cadena indicada por el usuario se deberá determinar si es aceptada o no por el autómata actualmente definido. Al igual que ocurre con las opciones anteriores, esta opción tampoco se podrá ejecutar si no se ha inicializado previamente un autómata. El formato de la traza a mostrar por pantalla será el siguiente:</li>
+</ul>
+<pre>Cadena de entrada: ___________&lt;br&gt;<br />
+Camino 1<br />
+Estado actual    Entrada    Siguiente estado
+X                Y          Z
+X                Y          Z
+X                Y          Z
+Cadena de entrada ACEPTADA / NO ACEPTADA&lt;br&gt;<br />
+Camino 2 <br />
+Estado actual    Entrada    Siguiente estado<br />
+X                Y          Z<br />
+X                Y          Z<br />
+X                Y          Z<br />
+Cadena de entrada ACEPTADA / NO ACEPTADA&lt;br&gt;<br />
+...<br />
+<br />
+Camino N<br />
+Estado actual    Entrada    Siguiente estado<br />
+X                Y          Z<br />
+X                Y          Z<br />
+X                Y          Z<br />
+Cadena de entrada ACEPTADA / NO ACEPTADA&lt;br&gt;<br />
+Decisión final:<br />
+Cadena de entrada ACEPTADA / NO ACEPTADA<br />
+</pre><p>Tal y como se indica en las líneas anteriores, en primer lugar se deberá mostrar la cadena de entrada. A continuación, y teniendo en cuenta que se trata de NFAs, la traza deberá recoger todos los posibles caminos que se podrían seguir para aceptar o rechazar la cadena de entrada. Para cada uno de los posibles caminos, se indicará cómo va transitando de un estado a otro el autómata según va leyendo la cadena de entrada, indicando en cada caso si por el camino en cuestión se acepta o no la cadena. Finalmente, se deberá indicar la decisión final del autómata mostrando el mensaje <em><b>“Cadena de entrada ACEPTADA”</b></em> si la cadena de entrada es aceptada por el autómata o el mensaje <em><b>“Cadena de entrada NO ACEPTADA”</b></em> si la cadena de entrada no es aceptada por el autómata. Cabe destacar que, desde que se encuentre un camino que acepte la cadena de entrada analizada, la decisión final del <a class="el" href="class_n_f_a.html" title="Implementación de un NFA. ">NFA</a> será la de "aceptar de la cadena de entrada".</p>
+<h2>Detalles de implementación</h2>
+<ul>
+<li>Para la implementación de esta práctica es conveniente partir del código desarrollado en la práctica anterior para la simulación de autómatas finitos deterministas.</li>
+<li>Se deberá definir una clase "Estado" que agrupe las características correspondientes a los estados de un autómata y las funcionalidades asociadas a los mismos.</li>
+<li>Se deberá definir una clase "NFA" que implemente las características de los autómatas finitos no deterministas.</li>
+<li>Se requerirá el uso de <a href="https://stackoverflow.com/questions/2481269/how-to-make-a-simple-c-makefile">Makefiles</a> para compilar los códigos.</li>
+<li>Documentación: se requerirá un mínimo de documentación para los códigos desarrollados, por lo menos documentar las cabeceras de las clases y los métodos más importantes. Vean referencias en estos Tips para documentar códigos utilizando <a href="http://www.stack.nl/~dimitri/doxygen/">Doxygen</a> </li>
+</ul>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

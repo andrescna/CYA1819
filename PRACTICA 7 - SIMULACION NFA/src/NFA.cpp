@@ -1,11 +1,16 @@
 #include "NFA.hpp"
 
+//! Constructor por defecto
 NFA::NFA(){}
-
+//! Destructor
 NFA::~NFA(){}
 
-////// Class NFA methods
+///////////////////////////////////////  METODOS DE CLASE NFA ////////////////////////////////////////
 
+//! Leer NFA.
+/*!
+    Lee un NFA que recibe desde un archivo «filename» y lo almacena en memoria para operar con él.
+*/
 int NFA::read_NFA(string filename) {
     
     ifstream file;
@@ -83,6 +88,10 @@ int NFA::read_NFA(string filename) {
 
 }
 
+//! Mostrar NFA.
+/*!
+    Muestra por consola el NFA almacenado en memoria.
+*/
 void NFA::show_NFA(){
 
     cout << endl << "El NFA cargado es:" << endl << endl;
@@ -117,6 +126,10 @@ void NFA::show_NFA(){
     cout << endl;
 }
 
+//! Calcular estados de muerte.
+/*!
+    Calcula si el NFA tiene estados de muerte (que no tienen transiciones salientes).
+*/
 void NFA::calc_death_states(){
 
     set<state>::iterator i = setStates_.begin();
@@ -159,6 +172,14 @@ void NFA::calc_death_states(){
     cout << endl;
 }
 
+//! Calcular estados importantes.
+/*!
+    Calcula los estados importantes de un NFA. Los estados importantes son los que tienen al menos una
+    transición con un símbolo del alfabeto distinto a epsilon O son estados de aceptación.
+
+    Una vez calculados muestra ambos conjuntos (el de importantes y no importantes) o avisa de que 
+    todos los estados son importantes.
+*/
 void NFA::calc_important_states(){
 
     set<char> important_states;
@@ -230,6 +251,11 @@ void NFA::calc_important_states(){
     }
 }
 
+//! ¿Es un DFA?.
+/*!
+    Calcula si el NFA en memoria es un DFA (es decir, que tiene una y solo una transición para cada
+    simbolo del alfabeto y además no tiene ninguna epsilon-transición).
+*/
 void NFA::is_DFA(){
     
     set<state>::iterator i = setStates_.begin();
@@ -284,7 +310,12 @@ void NFA::is_DFA(){
     return;
 }
 
-
+//! Analizar cadena
+/*!
+    Para una cadena introducida por el usuario muestra el conjunto de recorridos posibles que puede
+    seguir el NFA con dicha cadena, además de una decisión final. Esta será de aceptación si hay al
+    menos un camino para el que la cadena haya sido aceptada, y de no aceptación en otro caso.
+*/
 void NFA::analyze_word(string word){
 
     cout << endl;
@@ -292,8 +323,11 @@ void NFA::analyze_word(string word){
     cout << "Cadena de entrada: " << word << endl;
     cout << "——————————————————" << endl << endl;
 
-    int rec_num=1;
-    int& recorrido_number = rec_num;
+    int p_n=1;
+    int& path_number = p_n;
+
+    bool accepted = false;
+    bool& wordAccepted = accepted;
 
     vector<char> state_vector;
 	vector<string> analyzed_word;
@@ -326,21 +360,21 @@ void NFA::analyze_word(string word){
 
                 if (temp_state.get_stateId() == actualState){
                     if (temp_state.get_isStateFinal() == true){
-                        cout << "Recorrido " << recorrido_number << endl << endl;
+                        cout << "Camino " << path_number << endl << endl;
                         cout << "Est. actual\tEntrada\t\tEst. siguiente" << endl;
                         cout << path << endl;
-                        cout << endl << "***************";
-                        cout << endl << "\e[1mCADENA ACEPTADA\e[0m"; 
-                        cout << endl << "***************" << endl;
-                        return;
+                        cout << endl << "\e[1m*** CADENA ACEPTADA ***\e[0m" << endl << endl; 
+
+                        wordAccepted = true;
+                        //return;
                     }
                     else {
-                        cout << "Recorrido " << recorrido_number << endl << endl;
+                        cout << "Camino " << path_number << endl << endl;
                         cout << "Est. actual\tEntrada\t\tEst. siguiente" << endl;
                         cout << path << endl;
                         cout << endl << "\e[1mCADENA NO ACEPTADA\e[0m" << endl << endl;
                         cout << "——————————————————————————————————————" << endl << endl;
-                        recorrido_number++;
+                        path_number++;
                     }
                 }
                 i++;   
@@ -372,39 +406,52 @@ void NFA::analyze_word(string word){
 
                     if (temp_transition.get_character() == '~') {
                         transitionFound = true;
-                        string recorridoAux = path + actualState + "\t\t~\t\t" + temp_transition.get_next_state() + "\n"; 
+                        string auxPath = path + actualState + "\t\t~\t\t" + temp_transition.get_next_state() + "\n"; 
 
 				        state_vector.push_back(temp_transition.get_next_state());
 				        analyzed_word.push_back(subWord);	
-				        path_set.push_back(recorridoAux);
+				        path_set.push_back(auxPath);
 
                     }
 
                     if (temp_transition.get_character() == subWord[0]) {
                         transitionFound = true;
-                        string recorridoAux = path + actualState + "\t\t" + subWord[0] + "\t\t" + temp_transition.get_next_state() + "\n";
+                        string auxPath = path + actualState + "\t\t" + subWord[0] + "\t\t" + temp_transition.get_next_state() + "\n";
 
 				        state_vector.push_back(temp_transition.get_next_state());
 				        analyzed_word.push_back(subWord.substr(1));
-				        path_set.push_back(recorridoAux);
+				        path_set.push_back(auxPath);
                     }
                     k++; 
                 }
                
                 // si no encuentra ninguna transición para este símbolo ¿¿??
 		        if ((transitionFound == false) && (subWord != "")){
-			        cout << "Recorrido " << recorrido_number << endl << endl;
+			        cout << "Camino " << path_number << endl << endl;
                     cout << "Est. actual\tEntrada\t\tEst. siguiente" << endl;
                     cout << path << endl;
                     cout << endl << "\e[1mERROR\e[0m. Ha introducido un símbolo que no reconoce este NFA" << endl;
                     cout << endl << "\e[1mCADENA NO ACEPTADA\e[0m" << endl << endl;
 			        return;
-                    recorrido_number++;
+                    path_number++;
 		        }
                 s = totalStates_;
             }        
             else 
                 i++;
         }
+    }
+
+    if (wordAccepted){
+        cout << endl << "Decisión final:" << endl;
+        cout << endl << "***************";
+        cout << endl << "\e[1mCADENA ACEPTADA\e[0m"; 
+        cout << endl << "***************" << endl;
+    }
+    else {
+        cout << endl << "Decisión final:" << endl;
+        cout << endl << "xxxxxxxxxxxxxxxxxxxxxx";
+        cout << endl << "\e[1mx CADENA NO ACEPTADA x\e[0m"; 
+        cout << endl << "xxxxxxxxxxxxxxxxxxxxxx" << endl;
     }
 }
