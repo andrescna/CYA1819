@@ -366,7 +366,6 @@ void NFA::analyze_word(string word){
                         cout << endl << "\e[1m*** CADENA ACEPTADA ***\e[0m" << endl << endl; 
 
                         wordAccepted = true;
-                        //return;
                     }
                     else {
                         cout << "Camino " << path_number << endl << endl;
@@ -425,14 +424,12 @@ void NFA::analyze_word(string word){
                     k++; 
                 }
                
-                // si no encuentra ninguna transición para este símbolo ¿¿??
+                // si no encuentra ninguna transición para este símbolo
 		        if ((transitionFound == false) && (subWord != "")){
 			        cout << "Camino " << path_number << endl << endl;
                     cout << "Est. actual\tEntrada\t\tEst. siguiente" << endl;
                     cout << path << endl;
-                    cout << endl << "\e[1mERROR\e[0m. Ha introducido un símbolo que no reconoce este NFA" << endl;
                     cout << endl << "\e[1mCADENA NO ACEPTADA\e[0m" << endl << endl;
-			        return;
                     path_number++;
 		        }
                 s = totalStates_;

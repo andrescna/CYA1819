@@ -61,4 +61,4 @@ Tal y como se indica en las líneas anteriores, en primer lugar se deberá mostr
 * Se deberá definir una clase "Estado" que agrupe las características correspondientes a los estados de un autómata y las funcionalidades asociadas a los mismos.
 * Se deberá definir una clase "NFA" que implemente las características de los autómatas finitos no deterministas.
 * Se requerirá el uso de [Makefiles](https://stackoverflow.com/questions/2481269/how-to-make-a-simple-c-makefile) para compilar los códigos.
-* Documentación: se requerirá un mínimo de documentación para los códigos desarrollados, por lo menos documentar las cabeceras de las clases y los métodos más importantes. Vean referencias en estos Tips para documentar códigos utilizando [Doxygen](http://www.stack.nl/~dimitri/doxygen/)
+* Documentación: se requerirá un mínimo de documentación para los códigos desarrollados, por lo menos documentar las cabeceras de las clases y los métodos más importantes. Vean referencias en estos Tips para documentar códigos utilizando [Doxygen](http://www.doxygen.nl/manual/doxygen_usage.html)

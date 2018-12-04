@@ -38,17 +38,11 @@ int main(){
 
     bool end_loop = false;
     bool nfa_loaded = false;
-
-                // para debug
-    int a = nfa.read_NFA(default_filename);
-    nfa_loaded = true;
-                // para debug
-
     
     do {
         
-        //bool end_loop2 = false;
-        bool end_loop2 = true;
+        bool end_loop2 = false;
+        
  
         cout << endl;
         cout << "—————————————————————————————————————————————" << endl;
