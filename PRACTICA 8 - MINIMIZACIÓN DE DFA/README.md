@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-El objetivo de esta práctica consiste en implementar el algoritmo que minimice el número de estados de un autómata finito determinista (DFA). Para ello, se tomará como punto de partida el código elaborado en la práctica número 3 para la simulación de un DFA y se incluirá una opción para la minimización de los estados de un DFA previamente especificado.
+El objetivo de esta práctica consiste en implementar el algoritmo que minimice el número de estados de un autómata finito determinista (DFA). Para ello, se tomará como punto de partida el código elaborado en la práctica número 6 para la simulación de un DFA y se incluirá una opción para la minimización de los estados de un DFA previamente especificado.
 
 ## Algoritmo de minimización de estados
 
@@ -73,13 +73,11 @@ El programa principal debería ofrecer al usuario las funcionalidades siguientes
 
 * **Exportar DFA:** mediante esta opción se podrá exportar a un fichero *.dfa* el DFA actualmente definido en el programa. El formato a utilizar será el que se ha definido para los ficheros *.dfa*.
 
-
 ## Detalles de implementación
 
-* Para la implementación de esta práctica es conveniente partir del código desarrollado en la práctica número 3 donde se simularon autómatas finitos deterministas.
+* Para la implementación de esta práctica es conveniente partir del código desarrollado en la práctica número 6 donde se simularon autómatas finitos deterministas.
 * Se deberá añadir a la clase "DFA" un método "minimize" que obtenga el DFA mínimo equivalente. 
 * Se deberá modificar el código existente para permitir que además de mostrar por pantalla un DFA existente, también se pueda exportar la especificación del mismo a un fichero *.dfa*.
 * Se requerirá el [uso de Makefiles](http://stackoverflow.com/questions/2481269/how-to-make-simple-c-makefile) para compilar los códigos.
 * Documentación: se requerirá un mínimo de documentación para los códigos desarrollados, por lo menos documentar las cabeceras de las clases y los métodos más importantes. Vean referencias en estos Tips para documentar códigos utilizando [Doxygen](http://www.stack.nl/~dimitri/doxygen/)
 * Documentación: definir un [fichero de configuración de doxygen](http://codeyarns.com/2014/06/18/how-to-configure-doxygen-for-c-code/) para generar la documentación en html.
-

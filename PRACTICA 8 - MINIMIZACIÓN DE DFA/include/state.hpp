@@ -1,3 +1,17 @@
+/*! \class state
+*   \brief  Implementación de un estado.
+*
+*   Esta clase implementa el estado de un Autómata Finito (sea DFA o NFA). Para ello consta de un
+*   identificador de estado, un bool que almacena si es estado final o de aceptación y un conjunto
+*   de transiciones para dicho estado.
+*
+*   Además se definen los getters para acceder al identificador de estado, a si es inicial, al nº
+*   de transiciones de dicho estado y al conjunto de transiciones.
+*
+*   También se define un método para añadir transiciones al estado y los métodos de sobrecarga de
+*   operadores necesarios al usar un set de estados en la clase NFA.  
+*/
+
 #pragma once
 
 #include <set>
@@ -11,10 +25,10 @@ class state {
 
     private:
 
-    char stateId_;
-    bool isFinalState_;
+    char stateId_;                          /*!< Identificador de estado */
+    bool isFinalState_;                     /*!< ¿És de aceptación? */
 
-    set<transition> transitionSet_; //vector de transiciones
+    set<transition> transitionSet_;         /*!< Conjunto de transiciones */
 
     public:
 
