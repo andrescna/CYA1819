@@ -15,5 +15,6 @@ No se asegura que funcionen o que el código sea bonito :P
 * [Práctica 4 - Construyendo un muro](PRACTICA%204%20-%20CONSTRUYENDO%20UN%20MURO)
 * **INCOMPLETA** [Práctica 5 - Calculadora para lenguajes regulares](PRACTICA%205%20-%20CALCULADORA%20PARA%20LENGUAJES%20REGULARES)
 * [Práctica 6 - Simulación de un DFA](PRACTICA%206%20-%20SIMULACION%20DFA)
-* [Práctica 7 - Simulación de un NFA](PRACTICA%206%20-%20SIMULACION%20NFA)
-* [Práctica 8 - ]
+* [Práctica 7 - Simulación de un NFA](PRACTICA%207%20-%20SIMULACION%20NFA)
+* [Práctica 8 - Minimización de DFA](PRACTICA%208%20-%20MINIMIZACION%20DE%20DFA)
+* [Práctica 9 - Gramática regular a partir de DFA](PRACTICA%209%20-%20GRAMATICA%20REGULAR%20A%20PARTIR%20DE%20DFA)
