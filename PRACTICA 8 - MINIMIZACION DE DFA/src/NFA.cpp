@@ -68,12 +68,12 @@ int NFA::read_NFA(string filename) {
                 return (5);
             }
 
-            setStates_.insert(temp);
+            states_.insert(temp);
         }
 
 
         // ERROR 4: si el número de estados descritos no coincide con los que figuran en el fichero
-        if (totalStates_ != setStates_.size()){
+        if (totalStates_ != states_.size()){
             cout << endl << "\e[1mERROR\e[0m. NFA mal formateado: Nº de estados incorrecto." << endl;
             return(4);
         }
@@ -106,7 +106,7 @@ void NFA::show_NFA(){
     cout << totalStates_ << endl;
 	cout << initialState_ << endl;
 
-    set<state>::iterator i = setStates_.begin();
+    set<state>::iterator i = states_.begin();
     
 	for (int j = 0; j < totalStates_; j++){
 		
@@ -139,7 +139,7 @@ void NFA::show_NFA(){
 */
 void NFA::calc_death_states(){
 
-    set<state>::iterator i = setStates_.begin();
+    set<state>::iterator i = states_.begin();
     bool hasDeathStates = false;
     
 	// para cada estado comprueba si todas sus transiciones son a sí mismo
@@ -191,7 +191,7 @@ void NFA::calc_important_states(){
 
     set<char> important_states;
     set<char> not_important_states;
-    set<state>::iterator i = setStates_.begin();
+    set<state>::iterator i = states_.begin();
                 
     // busca el estado actual en el set de estados y luego comprueba en las trancisiones del estado
     for (int s = 0; s < totalStates_; s++){
@@ -265,7 +265,7 @@ void NFA::calc_important_states(){
 */
 bool NFA::is_DFA(){
     
-    set<state>::iterator i = setStates_.begin();
+    set<state>::iterator i = states_.begin();
     
     // se elimina epsilon del alfabeto "temporal" para poder dar el error de que solo hay alguna epsilon-transición
     set<char> alphabet_noepsilon = alphabet_;
@@ -296,7 +296,7 @@ bool NFA::is_DFA(){
             // ERROR: si tiene una transición con epsilon, no es un DFA
             if (temp_transition.get_character() == '~'){
                 cout << "\e[1mNO ES UN DFA\e[0m. Tiene al menos una epsilon-transición" << endl;
-                return;
+                return false;
             }
             else {
 
@@ -307,13 +307,12 @@ bool NFA::is_DFA(){
                 // ERROR: si no está el símbolo en el alfabeto es que hay varias transiciones para el mismo => no es DFA
                 else {
                     cout << "\e[1mNO ES UN DFA\e[0m. Varias transiciones para un mismo símbolo en un estado" << endl;
-                    return;
+                    return false;
                 }
             }
         }
         i++;
     }
-    cout << "El automata cargado \e[1mES UN DFA\e[0m" << endl;
     return true;
 }
 
@@ -359,7 +358,7 @@ void NFA::analyze_word(string word){
         //si ha acabado de procesar la cadena
 		if (subWord == ""){
 			
-            set<state>::iterator i = setStates_.begin();
+            set<state>::iterator i = states_.begin();
                 
             for (int j = 0; j < totalStates_; j++){
 		
@@ -387,7 +386,7 @@ void NFA::analyze_word(string word){
             }    
 		}
 
-		set<state>::iterator i = setStates_.begin();
+		set<state>::iterator i = states_.begin();
                 
         // busca el estado actual en el set de estados y luego comprueba en las transiciones del estado
         for (int s = 0; s < totalStates_; s++){
@@ -460,25 +459,203 @@ void NFA::analyze_word(string word){
     }
 }
 
-/////////////////////////////////  TO DO ///////////////////////////
-
-
 
 //! Minimizar DFA
 /*!
-    Utiliza el algoritmo de minimuzación de estados para obtener el DFA mínimo a partir de un DFA
+    Utiliza el algoritmo de minimización de estados para obtener el DFA mínimo a partir de un DFA
 */
 void NFA::minimize_DFA(){
 
+    vector<stateSet> PI;
+    stateSet accepted;
+    stateSet notAccepted;
+
+    set<state>::iterator i = states_.begin();
+
+    // Separa dos conjuntos iniciales: aceptación y no aceptación
+    for (int j=0; j< totalStates_; j++){
+
+        state temp_state = *i;
+
+        if (temp_state.get_isStateFinal() == true){
+            accepted.insert_state(*i);
+        }
+        else {
+            notAccepted.insert_state(*i);
+        }
+        i++;
+    }
+
+    PI.push_back(notAccepted);
+    PI.push_back(accepted);
+
+    cout << endl << "Conjunto inicial:"<< endl;
+    show_stateSet(PI, 0);
+    cout << endl;
+
+    vector<stateSet> PI_aux;
+    set<char> temp_alphabet = alphabet_;
+    int index = 1;
+    
+    // Mientras PI se pueda subdividir
+    do {
+            PI_aux = PI;
+            PI = create_new_partition(PI_aux, temp_alphabet, index);
+            index++;
+
+    } while (PI != PI_aux);
+
+    cout << "El DFA minimizado tiene " << PI.size() << " estados" << endl << endl; 
+    
+    // Almacenamos el DFA minimizado en memoria sustituyendo al anterior
+    build_DFA(PI);
 }
 
 
-
-
-//! Escribir NFA a archivo
+//! Construir DFA
 /*!
-    Imprime el NFA cargado en memoria a un fichero de salida, de acuerdo al formato estándar
+    Almacena el DFA minimizado en memoria sustituyendo el anterior de acuerdo al resultado de minimize_DFA
 */
-void NFA::write_NFA(string output){
+void NFA::build_DFA(vector<stateSet> PI){
 
+    states_.clear();
+    totalStates_ = PI.size();
+
+    // para cada estado asignamos un identificador correlativo (el nuevo identificador de estado)
+    for (int i=0; i< PI.size(); i++){
+        PI.at(i).set_id(i);
+    }
+
+    ////// ESTADO INICIAL //////////////////////////
+    // Buscamos en el conjunto de nuevos estados aquel que contiene al estado inicial del DFA original
+    for (int i=0; i< PI.size(); i++){
+        
+        set<state> temp_state_set = PI.at(i).get_states();
+        set<state>::iterator j = temp_state_set.begin();
+
+        for (int k=0; k< temp_state_set.size(); k++){
+            
+            state temp_state = *j;
+            if (temp_state.get_stateId() == initialState_){
+                initialState_ = PI.at(i).get_id();
+                i = PI.size();
+                break;
+            }
+        }
+    }
+
+    // Para cada uno de los nuevos estados de nuestro DFA minimizado
+    for (int i = 0; i < PI.size(); i++){
+		
+		set<state> temp_state_set = PI.at(i).get_states();
+
+        state new_state;
+        new_state.set_isStateFinal(false);
+        new_state.set_stateId(PI.at(i).get_id());
+
+        //// SI ES ESTADO FINAL ////////////////////////////
+        // (alguno de los estados que lo componen es final en el DFA original)
+        set<state>::iterator end = temp_state_set.begin();
+        for (int z = 0; z< temp_state_set.size(); z++){
+            state temp_state = *end;
+            if (temp_state.get_isStateFinal()){
+                new_state.set_isStateFinal(true);
+                break;
+            }
+            end++;
+        }
+
+        /*  Para cada uno de los nuevos estados miramos a qué nuevo estado transita para cada uno
+            de los símbolos del alfabeto. Como las transiciones que tenemos hacen referencia a los
+            estados originales debemos buscar en qué nuevo estado se encuentra nuesto estado original 
+            al que transita. El ID del nuevo estado que lo contenga será el que aparezca en la nueva
+            transición. Como suponemos que están reducidos al máximo SOLO SE MIRAN LAS TRANSICIONES
+            DEL PRIMER ELEMENTO (el resto deberían transitar a los mismos nuevos estados)
+        */
+        set<state>::iterator j = temp_state_set.begin();
+        
+        for (set<char>::iterator k = alphabet_.begin(); k != alphabet_.end(); k++){
+            
+            char symbol = *k;
+            state temp_state = *j;
+
+            set<transition> temp_transition_set = temp_state.get_transitionSet();
+            set<transition>::iterator l = temp_transition_set.begin();
+            
+            for (int m =0; m < temp_state.get_transitionNumber(); m++){
+
+                transition temp_transition = *l;
+                if(temp_transition.get_character() == symbol) {
+                    
+                    // Para cada transición miramos qué nuevo conjunto contiene
+                    // el estado original al que transita
+                    for (int n = 0; n < PI.size(); n++){
+
+                        set<state> temp_state_set = PI.at(n).get_states();
+                        set<state>::iterator o = temp_state_set.begin();
+
+                        for (int p = 0; p < temp_state_set.size(); p++){
+
+                            state temp_state = *o;
+
+                            if (temp_state.get_stateId()==temp_transition.get_next_state()){
+                                new_state.add_transition(symbol,PI.at(n).get_id());
+                                n=PI.size();
+                                break;
+                            }
+                            o++;
+                        }
+                    }
+                }
+                l++;
+            }
+		}
+        // Una vez miradas todas las transiciones insertamos el nuevo estado en nuestro DFA
+        states_.insert(new_state); 
+	}
+}
+
+
+//! Escribir NFA/DFA a archivo
+/*!
+    Imprime el NFA cargado en memoria a un fichero de salida, de acuerdo al formato estándar.
+    (Básicamente es el de imprimir a consola pero con fs en vez de cout ¬_¬)
+    En la implementación actual del programa (práctica 8) esta opción sólo será válida para DFAs
+*/
+void NFA::write_to_file(string output){
+    
+    ofstream fs(output, ios::out);
+	
+    fs << totalStates_ << endl;
+    fs << initialState_ << endl;
+	
+    set<state>::iterator i = states_.begin();
+    
+	for (int j = 0; j < totalStates_; j++){
+		
+        state temp_state = *i;
+        
+        // imprime identificador de estado y número de transiciones
+        fs << temp_state.get_stateId() << " ";
+        temp_state.get_isStateFinal () ? fs << "1 " : fs << "0 "; 
+        fs << temp_state.get_transitionNumber(); 
+
+        // Para poder acceder al set de transiciones sin segfaults
+        set<transition> temp_transition_set = temp_state.get_transitionSet();
+        set<transition>::iterator k = temp_transition_set.begin();
+        // ¯\_(ツ)_/¯ /////////////////////////////////////////////////////////
+
+        for (int l=0; l < temp_state.get_transitionNumber() ; l++){
+            transition temp_transition = *k;
+            fs << " " << temp_transition.get_character() << " " << temp_transition.get_next_state();
+            k++;
+        }
+        i++;
+        fs << endl;
+    }
+    fs << endl;
+
+    cout << endl <<  "DFA exportado con éxito" << endl;
+
+	fs.close();
 }

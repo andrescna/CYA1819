@@ -1,0 +1,54 @@
+\hypertarget{classstate_set}{}\section{Referencia de la Clase state\+Set}
+\label{classstate_set}\index{state\+Set@{state\+Set}}
+
+
+Implementación de un conjunto de estados para minimizar un \mbox{\hyperlink{class_n_f_a}{N\+FA}} a D\+FA.  
+
+
+
+
+{\ttfamily \#include $<$state\+Set.\+hpp$>$}
+
+\subsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classstate_set_a83d605e4a82190945aca7c784af3379c}\label{classstate_set_a83d605e4a82190945aca7c784af3379c}} 
+\mbox{\hyperlink{classstate_set_a83d605e4a82190945aca7c784af3379c}{state\+Set}} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstate_set_ae136d82fa85d07a0f357851eedeb900a}\label{classstate_set_ae136d82fa85d07a0f357851eedeb900a}} 
+\mbox{\hyperlink{classstate_set_ae136d82fa85d07a0f357851eedeb900a}{state\+Set}} (set$<$ \mbox{\hyperlink{classstate}{state}} $>$ subset)
+\begin{DoxyCompactList}\small\item\em Constructor de copia de set\+\_\+. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstate_set_a438223ae48b78e44280dbb70fae81973}\label{classstate_set_a438223ae48b78e44280dbb70fae81973}} 
+\mbox{\hyperlink{classstate_set_a438223ae48b78e44280dbb70fae81973}{state\+Set}} (\mbox{\hyperlink{classstate}{state}} new\+State, char id)
+\begin{DoxyCompactList}\small\item\em Constructor con nuevo estado e id (para separar en subconjuntos) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstate_set_a4314f7fdb86305cdcd81f49d255e9d77}\label{classstate_set_a4314f7fdb86305cdcd81f49d255e9d77}} 
+\mbox{\hyperlink{classstate_set_a4314f7fdb86305cdcd81f49d255e9d77}{$\sim$state\+Set}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstate_set_aa3906c273d091355ea57979ef5607c6d}\label{classstate_set_aa3906c273d091355ea57979ef5607c6d}} 
+void \mbox{\hyperlink{classstate_set_aa3906c273d091355ea57979ef5607c6d}{insert\+\_\+state}} (\mbox{\hyperlink{classstate}{state}})
+\begin{DoxyCompactList}\small\item\em Inserta estado en el conjunto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstate_set_a5c26b67db12e8613dcaef6b0c07f0687}\label{classstate_set_a5c26b67db12e8613dcaef6b0c07f0687}} 
+set$<$ \mbox{\hyperlink{classstate}{state}} $>$ \mbox{\hyperlink{classstate_set_a5c26b67db12e8613dcaef6b0c07f0687}{get\+\_\+states}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve el conjunto de estados. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstate_set_adaf364790e1910d6883eceb7729ca0e9}\label{classstate_set_adaf364790e1910d6883eceb7729ca0e9}} 
+char \mbox{\hyperlink{classstate_set_adaf364790e1910d6883eceb7729ca0e9}{get\+\_\+id}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve el identificador. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstate_set_a2708605cd599a15bd9ca5ddba68832d0}\label{classstate_set_a2708605cd599a15bd9ca5ddba68832d0}} 
+void {\bfseries set\+\_\+id} (int i)
+\item 
+\mbox{\Hypertarget{classstate_set_a4afb07dd96d47db65515e9d8abf38eda}\label{classstate_set_a4afb07dd96d47db65515e9d8abf38eda}} 
+int \mbox{\hyperlink{classstate_set_a4afb07dd96d47db65515e9d8abf38eda}{operator==}} (const \mbox{\hyperlink{classstate_set}{state\+Set}} \&rhs) const
+\begin{DoxyCompactList}\small\item\em sobrecarga operador == \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Implementación de un conjunto de estados para minimizar un \mbox{\hyperlink{class_n_f_a}{N\+FA}} a D\+FA. 
+
+Esta clase implementa la definición de un subconjunto de estados de un D\+FA. Consta de un set de estados y un ID que funciona como nuevo identificador del estado a la hora de construir el D\+FA.
+
+Además se implementan los métodos para imprimir un conjunto de state\+Sets por consola y para sub-\/ dividir un \mbox{\hyperlink{classstate_set}{state\+Set}} en varios subestados de acuerdo a las transiciones de los estados que lo conforman. 
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+include/state\+Set.\+hpp\item 
+src/state\+Set.\+cpp\end{DoxyCompactItemize}

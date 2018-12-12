@@ -1,0 +1,51 @@
+\hypertarget{classtransition}{}\section{Referencia de la Clase transition}
+\label{classtransition}\index{transition@{transition}}
+
+
+Implementación de una transición.  
+
+
+
+
+{\ttfamily \#include $<$transition.\+hpp$>$}
+
+\subsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtransition_ad42373578409e44b43e00fb900b87060}\label{classtransition_ad42373578409e44b43e00fb900b87060}} 
+\mbox{\hyperlink{classtransition_ad42373578409e44b43e00fb900b87060}{transition}} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtransition_a7966b46cc8cb2cec95d949772a0fd124}\label{classtransition_a7966b46cc8cb2cec95d949772a0fd124}} 
+\mbox{\hyperlink{classtransition_a7966b46cc8cb2cec95d949772a0fd124}{transition}} (char character, char next\+State)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtransition_ab98facd9f32969411251ecdabe2b6da4}\label{classtransition_ab98facd9f32969411251ecdabe2b6da4}} 
+\mbox{\hyperlink{classtransition_ab98facd9f32969411251ecdabe2b6da4}{$\sim$transition}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtransition_a2662dbecd399cdf4c1bc56de743ba4cb}\label{classtransition_a2662dbecd399cdf4c1bc56de743ba4cb}} 
+char \mbox{\hyperlink{classtransition_a2662dbecd399cdf4c1bc56de743ba4cb}{get\+\_\+character}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve caracter leído por automata. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtransition_ae61d6267fd639c7c9c33110690380d02}\label{classtransition_ae61d6267fd639c7c9c33110690380d02}} 
+char \mbox{\hyperlink{classtransition_ae61d6267fd639c7c9c33110690380d02}{get\+\_\+next\+\_\+state}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve siguiente estado. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtransition_a19ff0a62d44b9e704c0d0febb5d4b935}\label{classtransition_a19ff0a62d44b9e704c0d0febb5d4b935}} 
+\mbox{\hyperlink{classtransition}{transition}} \& \mbox{\hyperlink{classtransition_a19ff0a62d44b9e704c0d0febb5d4b935}{operator=}} (const \mbox{\hyperlink{classtransition}{transition}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Sobrecarga operador =. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtransition_aec5d35db88d6f0e23bad3e6d54cb2795}\label{classtransition_aec5d35db88d6f0e23bad3e6d54cb2795}} 
+int \mbox{\hyperlink{classtransition_aec5d35db88d6f0e23bad3e6d54cb2795}{operator==}} (const \mbox{\hyperlink{classtransition}{transition}} \&rhs) const
+\begin{DoxyCompactList}\small\item\em Sobrecarga operador ==. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtransition_ae7d0d78dff4788d1d69447f82918e701}\label{classtransition_ae7d0d78dff4788d1d69447f82918e701}} 
+int \mbox{\hyperlink{classtransition_ae7d0d78dff4788d1d69447f82918e701}{operator$<$}} (const \mbox{\hyperlink{classtransition}{transition}} \&rhs) const
+\begin{DoxyCompactList}\small\item\em Sobrecarga operador $<$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Implementación de una transición. 
+
+Esta clase implementa una transición de un estado de un Autómata Finito (sea D\+FA o \mbox{\hyperlink{class_n_f_a}{N\+FA}}). Para ello consta de una dupla de elementos\+: el caracter de la cadena que lee el automata y el siguiente estado para ese caracter.
+
+Además se definen los getters para acceder al caracter y al siguiente estado, además de los los métodos de sobrecarga de operadores necesarios al usar un set de transiciones en la clase state. 
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+include/transition.\+hpp\item 
+src/transition.\+cpp\end{DoxyCompactItemize}

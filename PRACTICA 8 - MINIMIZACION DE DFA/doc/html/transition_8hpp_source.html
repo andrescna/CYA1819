@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulador NFA: Fichero Fuente include/transition.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Simulador NFA
+   </div>
+   <div id="projectbrief">Simula el comportamiento de un NFA</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">transition.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div><div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classtransition.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classtransition.html">transition</a>{</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">private</span>:</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">char</span> character_;            </div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">char</span> nextState_;            </div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classtransition.html#ad42373578409e44b43e00fb900b87060">transition</a>();</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classtransition.html#ad42373578409e44b43e00fb900b87060">transition</a>(<span class="keywordtype">char</span> character, <span class="keywordtype">char</span> nextState);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classtransition.html#ab98facd9f32969411251ecdabe2b6da4">~transition</a>();</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">char</span> <a class="code" href="classtransition.html#a2662dbecd399cdf4c1bc56de743ba4cb">get_character</a>();</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">char</span> <a class="code" href="classtransition.html#ae61d6267fd639c7c9c33110690380d02">get_next_state</a>();</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classtransition.html">transition</a>&amp; <a class="code" href="classtransition.html#a19ff0a62d44b9e704c0d0febb5d4b935">operator=</a>(<span class="keyword">const</span> <a class="code" href="classtransition.html">transition</a> &amp;rhs);</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classtransition.html#aec5d35db88d6f0e23bad3e6d54cb2795">operator==</a>(<span class="keyword">const</span> <a class="code" href="classtransition.html">transition</a> &amp;rhs) <span class="keyword">const</span>;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classtransition.html#ae7d0d78dff4788d1d69447f82918e701">operator&lt;</a>(<span class="keyword">const</span> <a class="code" href="classtransition.html">transition</a> &amp;rhs) <span class="keyword">const</span>;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div><div class="ttc" id="classtransition_html_ad42373578409e44b43e00fb900b87060"><div class="ttname"><a href="classtransition.html#ad42373578409e44b43e00fb900b87060">transition::transition</a></div><div class="ttdeci">transition()</div><div class="ttdoc">Constructor por defecto. </div><div class="ttdef"><b>Definition:</b> transition.cpp:4</div></div>
+<div class="ttc" id="classtransition_html_a2662dbecd399cdf4c1bc56de743ba4cb"><div class="ttname"><a href="classtransition.html#a2662dbecd399cdf4c1bc56de743ba4cb">transition::get_character</a></div><div class="ttdeci">char get_character()</div><div class="ttdoc">Devuelve caracter leído por automata. </div><div class="ttdef"><b>Definition:</b> transition.cpp:20</div></div>
+<div class="ttc" id="classtransition_html_a19ff0a62d44b9e704c0d0febb5d4b935"><div class="ttname"><a href="classtransition.html#a19ff0a62d44b9e704c0d0febb5d4b935">transition::operator=</a></div><div class="ttdeci">transition &amp; operator=(const transition &amp;rhs)</div><div class="ttdoc">Sobrecarga operador =. </div><div class="ttdef"><b>Definition:</b> transition.cpp:33</div></div>
+<div class="ttc" id="classtransition_html_ae61d6267fd639c7c9c33110690380d02"><div class="ttname"><a href="classtransition.html#ae61d6267fd639c7c9c33110690380d02">transition::get_next_state</a></div><div class="ttdeci">char get_next_state()</div><div class="ttdoc">Devuelve siguiente estado. </div><div class="ttdef"><b>Definition:</b> transition.cpp:25</div></div>
+<div class="ttc" id="classtransition_html_ab98facd9f32969411251ecdabe2b6da4"><div class="ttname"><a href="classtransition.html#ab98facd9f32969411251ecdabe2b6da4">transition::~transition</a></div><div class="ttdeci">~transition()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> transition.cpp:7</div></div>
+<div class="ttc" id="classtransition_html_aec5d35db88d6f0e23bad3e6d54cb2795"><div class="ttname"><a href="classtransition.html#aec5d35db88d6f0e23bad3e6d54cb2795">transition::operator==</a></div><div class="ttdeci">int operator==(const transition &amp;rhs) const</div><div class="ttdoc">Sobrecarga operador ==. </div><div class="ttdef"><b>Definition:</b> transition.cpp:40</div></div>
+<div class="ttc" id="classtransition_html_ae7d0d78dff4788d1d69447f82918e701"><div class="ttname"><a href="classtransition.html#ae7d0d78dff4788d1d69447f82918e701">transition::operator&lt;</a></div><div class="ttdeci">int operator&lt;(const transition &amp;rhs) const</div><div class="ttdoc">Sobrecarga operador &lt;. </div><div class="ttdef"><b>Definition:</b> transition.cpp:50</div></div>
+<div class="ttc" id="classtransition_html"><div class="ttname"><a href="classtransition.html">transition</a></div><div class="ttdoc">Implementación de una transición. </div><div class="ttdef"><b>Definition:</b> transition.hpp:15</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

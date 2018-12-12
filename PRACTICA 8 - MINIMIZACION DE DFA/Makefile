@@ -1,4 +1,4 @@
-# CYA1819 - P5
+# CYA1819 - P8
 
 TARGET = DFAsim
 

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulador NFA: Fichero Fuente include/NFA.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Simulador NFA
+   </div>
+   <div id="projectbrief">Simula el comportamiento de un NFA</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">NFA.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;state.hpp&quot;</span></div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;stateSet.hpp&quot;</span></div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_n_f_a.html">   35</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_n_f_a.html">NFA</a>{</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">private</span>:</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">int</span> totalStates_;               </div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">char</span> initialState_;             </div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    set&lt;state&gt; states_;          </div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    set&lt;char&gt; alphabet_;            </div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="class_n_f_a.html#a6a4e79c90998ebb75e7b6ce280b14bed">NFA</a>();</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="class_n_f_a.html#a48f9c98fbfd76cd5bb89a71a9bb006f9">~NFA</a>();</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_n_f_a.html#a694ab54b829fb1d45ec8bb752a0c31a0">read_NFA</a>(<span class="keywordtype">string</span> filename);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_n_f_a.html#a53a6b0ddcfb706dc4725cf2a6a8f2388">show_NFA</a>();</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_n_f_a.html#a6a32ddeb3c446ff0f31f09f3d04b1582">calc_death_states</a>();</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_n_f_a.html#addc2cae46439f77116f37230ec8a90d0">calc_important_states</a>();</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_n_f_a.html#ab96e6d2ab872971542e2565ceacf4b61">is_DFA</a>();</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_n_f_a.html#a7cad5fd6ba765d9d8099793421100234">analyze_word</a>(<span class="keywordtype">string</span> word);</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_n_f_a.html#afe68583b823822777693018f69e1b6b0">minimize_DFA</a>();</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_n_f_a.html#aaadda0fc1d4ebc279cbb25a8486a8b72">build_DFA</a>(vector&lt;stateSet&gt; PI);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_n_f_a.html#ac7c80c0e89655abde2de1c7c8c37db5e">write_to_file</a>(<span class="keywordtype">string</span> output); </div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;};</div><div class="ttc" id="class_n_f_a_html_aaadda0fc1d4ebc279cbb25a8486a8b72"><div class="ttname"><a href="class_n_f_a.html#aaadda0fc1d4ebc279cbb25a8486a8b72">NFA::build_DFA</a></div><div class="ttdeci">void build_DFA(vector&lt; stateSet &gt; PI)</div><div class="ttdoc">Construir DFA. </div><div class="ttdef"><b>Definition:</b> NFA.cpp:519</div></div>
+<div class="ttc" id="class_n_f_a_html_a7cad5fd6ba765d9d8099793421100234"><div class="ttname"><a href="class_n_f_a.html#a7cad5fd6ba765d9d8099793421100234">NFA::analyze_word</a></div><div class="ttdeci">void analyze_word(string word)</div><div class="ttdoc">Analizar cadena. </div><div class="ttdef"><b>Definition:</b> NFA.cpp:325</div></div>
+<div class="ttc" id="class_n_f_a_html_a6a4e79c90998ebb75e7b6ce280b14bed"><div class="ttname"><a href="class_n_f_a.html#a6a4e79c90998ebb75e7b6ce280b14bed">NFA::NFA</a></div><div class="ttdeci">NFA()</div><div class="ttdoc">Constructor por defecto. </div><div class="ttdef"><b>Definition:</b> NFA.cpp:4</div></div>
+<div class="ttc" id="class_n_f_a_html_a48f9c98fbfd76cd5bb89a71a9bb006f9"><div class="ttname"><a href="class_n_f_a.html#a48f9c98fbfd76cd5bb89a71a9bb006f9">NFA::~NFA</a></div><div class="ttdeci">~NFA()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> NFA.cpp:6</div></div>
+<div class="ttc" id="class_n_f_a_html_afe68583b823822777693018f69e1b6b0"><div class="ttname"><a href="class_n_f_a.html#afe68583b823822777693018f69e1b6b0">NFA::minimize_DFA</a></div><div class="ttdeci">void minimize_DFA()</div><div class="ttdoc">Minimizar DFA. </div><div class="ttdef"><b>Definition:</b> NFA.cpp:467</div></div>
+<div class="ttc" id="class_n_f_a_html_a6a32ddeb3c446ff0f31f09f3d04b1582"><div class="ttname"><a href="class_n_f_a.html#a6a32ddeb3c446ff0f31f09f3d04b1582">NFA::calc_death_states</a></div><div class="ttdeci">void calc_death_states()</div><div class="ttdoc">Calcular estados de muerte. </div><div class="ttdef"><b>Definition:</b> NFA.cpp:140</div></div>
+<div class="ttc" id="class_n_f_a_html_a53a6b0ddcfb706dc4725cf2a6a8f2388"><div class="ttname"><a href="class_n_f_a.html#a53a6b0ddcfb706dc4725cf2a6a8f2388">NFA::show_NFA</a></div><div class="ttdeci">void show_NFA()</div><div class="ttdoc">Mostrar NFA. </div><div class="ttdef"><b>Definition:</b> NFA.cpp:102</div></div>
+<div class="ttc" id="class_n_f_a_html_addc2cae46439f77116f37230ec8a90d0"><div class="ttname"><a href="class_n_f_a.html#addc2cae46439f77116f37230ec8a90d0">NFA::calc_important_states</a></div><div class="ttdeci">void calc_important_states()</div><div class="ttdoc">Calcular estados importantes. </div><div class="ttdef"><b>Definition:</b> NFA.cpp:190</div></div>
+<div class="ttc" id="class_n_f_a_html_ab96e6d2ab872971542e2565ceacf4b61"><div class="ttname"><a href="class_n_f_a.html#ab96e6d2ab872971542e2565ceacf4b61">NFA::is_DFA</a></div><div class="ttdeci">bool is_DFA()</div><div class="ttdoc">¿Es un DFA?. </div><div class="ttdef"><b>Definition:</b> NFA.cpp:266</div></div>
+<div class="ttc" id="class_n_f_a_html_ac7c80c0e89655abde2de1c7c8c37db5e"><div class="ttname"><a href="class_n_f_a.html#ac7c80c0e89655abde2de1c7c8c37db5e">NFA::write_to_file</a></div><div class="ttdeci">void write_to_file(string output)</div><div class="ttdoc">Escribir NFA/DFA a archivo. </div><div class="ttdef"><b>Definition:</b> NFA.cpp:625</div></div>
+<div class="ttc" id="class_n_f_a_html_a694ab54b829fb1d45ec8bb752a0c31a0"><div class="ttname"><a href="class_n_f_a.html#a694ab54b829fb1d45ec8bb752a0c31a0">NFA::read_NFA</a></div><div class="ttdeci">int read_NFA(string filename)</div><div class="ttdoc">Leer NFA. </div><div class="ttdef"><b>Definition:</b> NFA.cpp:14</div></div>
+<div class="ttc" id="class_n_f_a_html"><div class="ttname"><a href="class_n_f_a.html">NFA</a></div><div class="ttdoc">Implementación de un NFA. </div><div class="ttdef"><b>Definition:</b> NFA.hpp:35</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

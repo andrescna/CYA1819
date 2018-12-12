@@ -36,7 +36,9 @@ class state {
     state(char id, char isFinalState);
 
     char get_stateId();
+    void set_stateId(char id);
     bool get_isStateFinal();
+    void set_isStateFinal(bool isfinal);
     set<transition> get_transitionSet();
     int get_transitionNumber(); 
 

@@ -14,11 +14,15 @@ state::state(char id, char isFinalState){
 
 ///////////////////////////////////////  METODOS DE CLASE STATE ////////////////////////////////////////
 
-//////// GETTERS
+//////// SETTERS Y GETTERS
 
 //! Devuelve identificador del estado
 char state::get_stateId(){
      return stateId_;
+}
+
+void state::set_stateId(char id){
+    stateId_ = id;
 }
 
 //! Devuelve si el estado es final
@@ -26,10 +30,15 @@ bool state::get_isStateFinal(){
         return isFinalState_;
 }
 
+void state::set_isStateFinal(bool isfinal){
+    isFinalState_ = isfinal;
+}
+
 //! Devuelve el conjunto de transiciones
 set<transition> state::get_transitionSet(){
     return transitionSet_;
 }
+
 //! Devuelve el número de transiciones de ese estado
 int state::get_transitionNumber(){
     return transitionSet_.size();

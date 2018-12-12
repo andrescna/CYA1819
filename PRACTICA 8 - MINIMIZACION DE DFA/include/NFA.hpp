@@ -10,7 +10,15 @@
 *
 *   Además se definen los métodos necesarios para llevar a cabo las operaciones que se nos piden en
 *   los requisitos: leer, mostrar, calcular los estados de muerte, calcular estados importantes, 
-*   comprobar si es un DFA y analizar una cadena para ver si el NFA la reconoce.  
+*   comprobar si es un DFA y analizar una cadena para ver si el NFA la reconoce.
+*
+*   Para la práctica 8 se añaden los métodos para minimizar un DFA (puesto que a fin de cuentas un
+*   DFA es un caso particular de NFA con las restricciones de una única transición por cada símbolo
+*   del alfabeto para cada estado y el no poder tener epsilon-transiciones, por lo que se puede
+*   representar con la misma estructura de un NFA), almacenar en memoria el nuevo DFA minimizado
+*   sustituyendo los datos del cargado actualmente y un método auxiliar para guardar el NFA/DFA 
+*   almacenado en un archivo (que simplemente es el método show_NFA() pero mandando la salida a un
+*   fichero y no a cout)  
 */
 
 #pragma once
@@ -21,6 +29,7 @@
 #include <vector>
 
 #include "state.hpp"
+#include "stateSet.hpp"
 
 
 class NFA{
@@ -29,7 +38,7 @@ class NFA{
 
     int totalStates_;               /*!< Número de estados */
     char initialState_;             /*!< Estado inicial */
-    set<state> setStates_;          /*!< Conjunto de estados */
+    set<state> states_;          /*!< Conjunto de estados */
     set<char> alphabet_;            /*!< Alfabeto */
 
     public:
@@ -41,10 +50,11 @@ class NFA{
     void show_NFA();
     void calc_death_states();
     void calc_important_states();
-    void is_DFA();
+    bool is_DFA();
     void analyze_word(string word);
 
     void minimize_DFA();
-    void write_NFA(string output); 
+    void build_DFA(vector<stateSet> PI);
+    void write_to_file(string output); 
 
 };

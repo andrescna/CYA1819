@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulador NFA: Fichero Fuente include/stateSet.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Simulador NFA
+   </div>
+   <div id="projectbrief">Simula el comportamiento de un NFA</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">stateSet.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;state.hpp&quot;</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classstate_set.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="classstate_set.html">stateSet</a>{</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">private</span>:</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    set&lt;state&gt; set_;                </div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">char</span> setId_;                    </div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classstate_set.html#a83d605e4a82190945aca7c784af3379c">stateSet</a>();</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classstate_set.html#a83d605e4a82190945aca7c784af3379c">stateSet</a>(set&lt;state&gt; subset);</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classstate_set.html#a83d605e4a82190945aca7c784af3379c">stateSet</a>(<a class="code" href="classstate.html">state</a> newState, <span class="keywordtype">char</span> <span class="keywordtype">id</span>);</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classstate_set.html#a4314f7fdb86305cdcd81f49d255e9d77">~stateSet</a>();</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classstate_set.html#aa3906c273d091355ea57979ef5607c6d">insert_state</a>(<a class="code" href="classstate.html">state</a>);</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    set&lt;state&gt; <a class="code" href="classstate_set.html#a5c26b67db12e8613dcaef6b0c07f0687">get_states</a>();</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">char</span> <a class="code" href="classstate_set.html#adaf364790e1910d6883eceb7729ca0e9">get_id</a>();</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> set_id(<span class="keywordtype">int</span> i);</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classstate_set.html#a4afb07dd96d47db65515e9d8abf38eda">operator==</a>(<span class="keyword">const</span> <a class="code" href="classstate_set.html">stateSet</a> &amp;rhs) <span class="keyword">const</span>;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;};</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> show_stateSet(vector&lt;stateSet&gt; PI, <span class="keywordtype">int</span> index);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;vector&lt;stateSet&gt; create_new_partition(vector&lt;stateSet&gt; PI, set&lt;char&gt; alphabet, <span class="keywordtype">int</span> index);</div><div class="ttc" id="classstate_set_html_adaf364790e1910d6883eceb7729ca0e9"><div class="ttname"><a href="classstate_set.html#adaf364790e1910d6883eceb7729ca0e9">stateSet::get_id</a></div><div class="ttdeci">char get_id()</div><div class="ttdoc">Devuelve el identificador. </div><div class="ttdef"><b>Definition:</b> stateSet.cpp:36</div></div>
+<div class="ttc" id="classstate_set_html_aa3906c273d091355ea57979ef5607c6d"><div class="ttname"><a href="classstate_set.html#aa3906c273d091355ea57979ef5607c6d">stateSet::insert_state</a></div><div class="ttdeci">void insert_state(state)</div><div class="ttdoc">Inserta estado en el conjunto. </div><div class="ttdef"><b>Definition:</b> stateSet.cpp:26</div></div>
+<div class="ttc" id="classstate_set_html"><div class="ttname"><a href="classstate_set.html">stateSet</a></div><div class="ttdoc">Implementación de un conjunto de estados para minimizar un NFA a DFA. </div><div class="ttdef"><b>Definition:</b> stateSet.hpp:21</div></div>
+<div class="ttc" id="classstate_set_html_a4314f7fdb86305cdcd81f49d255e9d77"><div class="ttname"><a href="classstate_set.html#a4314f7fdb86305cdcd81f49d255e9d77">stateSet::~stateSet</a></div><div class="ttdeci">~stateSet()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> stateSet.cpp:19</div></div>
+<div class="ttc" id="classstate_set_html_a5c26b67db12e8613dcaef6b0c07f0687"><div class="ttname"><a href="classstate_set.html#a5c26b67db12e8613dcaef6b0c07f0687">stateSet::get_states</a></div><div class="ttdeci">set&lt; state &gt; get_states()</div><div class="ttdoc">Devuelve el conjunto de estados. </div><div class="ttdef"><b>Definition:</b> stateSet.cpp:31</div></div>
+<div class="ttc" id="classstate_set_html_a4afb07dd96d47db65515e9d8abf38eda"><div class="ttname"><a href="classstate_set.html#a4afb07dd96d47db65515e9d8abf38eda">stateSet::operator==</a></div><div class="ttdeci">int operator==(const stateSet &amp;rhs) const</div><div class="ttdoc">sobrecarga operador == </div><div class="ttdef"><b>Definition:</b> stateSet.cpp:48</div></div>
+<div class="ttc" id="classstate_html"><div class="ttname"><a href="classstate.html">state</a></div><div class="ttdoc">Implementación de un estado. </div><div class="ttdef"><b>Definition:</b> state.hpp:24</div></div>
+<div class="ttc" id="classstate_set_html_a83d605e4a82190945aca7c784af3379c"><div class="ttname"><a href="classstate_set.html#a83d605e4a82190945aca7c784af3379c">stateSet::stateSet</a></div><div class="ttdeci">stateSet()</div><div class="ttdoc">Constructor por defecto. </div><div class="ttdef"><b>Definition:</b> stateSet.cpp:5</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

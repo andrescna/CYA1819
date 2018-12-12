@@ -1,0 +1,65 @@
+\hypertarget{classstate}{}\section{Referencia de la Clase state}
+\label{classstate}\index{state@{state}}
+
+
+Implementación de un estado.  
+
+
+
+
+{\ttfamily \#include $<$state.\+hpp$>$}
+
+\subsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classstate_aee920d9f534640451f22b3525f9cb9de}\label{classstate_aee920d9f534640451f22b3525f9cb9de}} 
+\mbox{\hyperlink{classstate_aee920d9f534640451f22b3525f9cb9de}{state}} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstate_a812734a4f547d491a5687ba90d136127}\label{classstate_a812734a4f547d491a5687ba90d136127}} 
+\mbox{\hyperlink{classstate_a812734a4f547d491a5687ba90d136127}{state}} (char id, char is\+Final\+State)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstate_a864ef817493becc7064268d2a8e39a9a}\label{classstate_a864ef817493becc7064268d2a8e39a9a}} 
+char \mbox{\hyperlink{classstate_a864ef817493becc7064268d2a8e39a9a}{get\+\_\+state\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve identificador del estado. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstate_a7c2963978efe6e239a192c22755bb5c7}\label{classstate_a7c2963978efe6e239a192c22755bb5c7}} 
+void {\bfseries set\+\_\+state\+Id} (char id)
+\item 
+\mbox{\Hypertarget{classstate_a45d2639356a8b7ca910ab9aebee13e7a}\label{classstate_a45d2639356a8b7ca910ab9aebee13e7a}} 
+bool \mbox{\hyperlink{classstate_a45d2639356a8b7ca910ab9aebee13e7a}{get\+\_\+is\+State\+Final}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve si el estado es final. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstate_a5ee31622b73ca779d73cd0299a8ce4a2}\label{classstate_a5ee31622b73ca779d73cd0299a8ce4a2}} 
+void {\bfseries set\+\_\+is\+State\+Final} (bool isfinal)
+\item 
+\mbox{\Hypertarget{classstate_a500a0963e1f0d67227083caf46225795}\label{classstate_a500a0963e1f0d67227083caf46225795}} 
+set$<$ \mbox{\hyperlink{classtransition}{transition}} $>$ \mbox{\hyperlink{classstate_a500a0963e1f0d67227083caf46225795}{get\+\_\+transition\+Set}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve el conjunto de transiciones. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstate_ac9a2cc746237061c5b524d576f47e9df}\label{classstate_ac9a2cc746237061c5b524d576f47e9df}} 
+int \mbox{\hyperlink{classstate_ac9a2cc746237061c5b524d576f47e9df}{get\+\_\+transition\+Number}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve el número de transiciones de ese estado. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstate_ab5407ccf961f8429c9419a24d39a3b58}\label{classstate_ab5407ccf961f8429c9419a24d39a3b58}} 
+void \mbox{\hyperlink{classstate_ab5407ccf961f8429c9419a24d39a3b58}{add\+\_\+transition}} (char character, char next\+State)
+\begin{DoxyCompactList}\small\item\em Añadir transición al estado. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstate_a84e8155bb10a8acca7295df47b5bd51b}\label{classstate_a84e8155bb10a8acca7295df47b5bd51b}} 
+\mbox{\hyperlink{classstate}{state}} \& \mbox{\hyperlink{classstate_a84e8155bb10a8acca7295df47b5bd51b}{operator=}} (const \mbox{\hyperlink{classstate}{state}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Sobrecarga operador =. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstate_a11f919a4500e40494d3f24f12e1d0e67}\label{classstate_a11f919a4500e40494d3f24f12e1d0e67}} 
+int \mbox{\hyperlink{classstate_a11f919a4500e40494d3f24f12e1d0e67}{operator==}} (const \mbox{\hyperlink{classstate}{state}} \&rhs) const
+\begin{DoxyCompactList}\small\item\em Sobrecarga operador ==. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstate_a0f39dd40c21202de8607a230d26dbf90}\label{classstate_a0f39dd40c21202de8607a230d26dbf90}} 
+int \mbox{\hyperlink{classstate_a0f39dd40c21202de8607a230d26dbf90}{operator$<$}} (const \mbox{\hyperlink{classstate}{state}} \&rhs) const
+\begin{DoxyCompactList}\small\item\em Sobrecarga operador $<$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Implementación de un estado. 
+
+Esta clase implementa el estado de un Autómata Finito (sea D\+FA o \mbox{\hyperlink{class_n_f_a}{N\+FA}}). Para ello consta de un identificador de estado, un bool que almacena si es estado final o de aceptación y un conjunto de transiciones para dicho estado.
+
+Además se definen los getters para acceder al identificador de estado, a si es inicial, al nº de transiciones de dicho estado y al conjunto de transiciones.
+
+También se define un método para añadir transiciones al estado y los métodos de sobrecarga de operadores necesarios al usar un set de estados en la clase \mbox{\hyperlink{class_n_f_a}{N\+FA}}. 
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+include/state.\+hpp\item 
+src/state.\+cpp\end{DoxyCompactItemize}
