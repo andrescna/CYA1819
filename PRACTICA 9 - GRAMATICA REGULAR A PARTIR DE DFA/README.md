@@ -28,7 +28,7 @@ Sea *L* un lenguaje regular, entonces existe un DFA *M ≡ (Σ,Q, s, F, δ)*, ta
 Dicha gramática regular G se puede definir como: 
  
 ```
-Σ ′ = Σ  
+Σ′ = Σ  
 V = Q  
 S = s  
 P = {q → ap | δ(q, a) = p} ∪ {q → ε | q ∈ F}
@@ -59,7 +59,7 @@ A -> 0B | 1S | ~
 B -> 0B | 1B
 ```
 
-## Funcionamiento general del programa
+## Funcionamiento general del programa
 
 El programa principal recibirá mediante la línea de comandos dos argumentos:
 

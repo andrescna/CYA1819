@@ -37,9 +37,7 @@ int DFA::read_DFA(string filename) {
         for (int i = 0; i < totalStates_; i++){
 
             getline(file, line);
-
             int j=0;
-
             char stateId = line[j];
             j+=2;
             char isFinalState = line[j];
@@ -51,9 +49,7 @@ int DFA::read_DFA(string filename) {
             //nº de transiciones
             char transition_number = (line[j]);
             int trans_n = transition_number - '0';
-
             j+=2;
-
             string temp_state_symbols = "";
 
             for (; j < line.length();j+=4){
@@ -279,10 +275,68 @@ int DFA::analyze_word(string word){
 */
 GR DFA::convert_to_GR(){
 
+    set<productionSet> temp_productions;
 
+    set<state>::iterator i = states_.begin();
+    
+    for (int j = 0; j < totalStates_; j++){
 
+        state temp_state = *i;
 
+        productionSet aux_pset;
+        char aux_symbol;// = temp_state.get_stateId()+16;
 
+        if (initialState_== '0'){
+            aux_symbol = temp_state.get_stateId()+16;
+        }
+        else {
+            aux_symbol = temp_state.get_stateId()+17;
+        }
+        
+        
+        if (temp_state.get_stateId() == initialState_){
+            aux_symbol = 'S';
+        }
 
+        aux_pset.set_nonTerminal(aux_symbol);
 
+        if (temp_state.get_isStateFinal()){
+            aux_pset.add_production("~");
+        }
+
+        // sin esto hace segfaults ¬___¬
+        set<transition> temp_transition_set = temp_state.get_transitionSet();
+        set<transition>::iterator k = temp_transition_set.begin();
+
+        for(int l = 0; l< temp_state.get_transitionSet().size(); l++){
+
+            transition temp_transition = *k;
+            char aux_1 = temp_transition.get_character();
+            char aux_2;
+            
+            if (initialState_== '0'){
+                aux_2 = temp_transition.get_next_state()+16;
+            }
+            else {
+                aux_2 = temp_transition.get_next_state()+17;
+            }
+            
+            if (temp_transition.get_next_state()==initialState_){
+                aux_2 = 'S';
+            }
+
+            string aux_prod = "";
+
+            aux_prod += aux_1; 
+            aux_prod += aux_2;
+
+            aux_pset.add_production(aux_prod);
+
+            k++;
+        }
+        temp_productions.insert(aux_pset);
+        i++;
+    }
+    GR grammar(alphabet_, 'S', temp_productions);
+    return grammar;
 }

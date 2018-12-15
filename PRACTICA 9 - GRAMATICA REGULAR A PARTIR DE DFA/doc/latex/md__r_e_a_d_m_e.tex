@@ -1,0 +1,96 @@
+\subsection*{Objetivo}
+
+El objetivo de esta práctica consiste en la realización de un programa en C++ que lea desde un fichero la especificación de un autómata finito determinista y obtenga a partir de él una gramática regular que genere el lenguaje reconocido por el autómata.
+
+\subsection*{Gramática regular}
+
+Una gramática regular es una 4-\/tupla G ≡ (Σ, V, S, P) donde\+:
+
+
+\begin{DoxyItemize}
+\item Σ es el conjunto de símbolos terminales o alfabeto de la gramática.
+\item V es el conjunto de símbolos no terminales.
+\item S es un símbolo no terminal que se llama símbolo de arranque o axioma de la gramática (S ∈ V ).
+\item P es una colección de reglas de sustitución denominadas producciones, tal que\+:
+\begin{DoxyItemize}
+\item Todas las producciones son regulares por la derecha\+: {\itshape A → uB $\vert$ v} (tal que A, B ∈ V y u, v ∈ Σ$\ast$)
+\item O, todas las producciones son regulares por la izquierda\+: {\itshape A → Bu $\vert$ v} (tal que A, B ∈ V y u, v ∈ Σ$\ast$)
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+Se dice que una gramática es lineal por la derecha si todas sus producciones son regulares por la derecha. De forma análoga, se dice que una gramática es lineal por la izquierda si todas sus producciones son regulares por la izquierda.
+
+Teniendo esto en cuenta diremos que una gramática es regular si es lineal por la derecha o lineal por la izquierda.
+
+\subsection*{Gramática regular a partir de un \mbox{\hyperlink{class_d_f_a}{D\+FA}}}
+
+Sea {\itshape L} un lenguaje regular, entonces existe un \mbox{\hyperlink{class_d_f_a}{D\+FA}} {\itshape M ≡ (Σ,Q, s, F, δ)}, tal que {\itshape L = L(\+M)}. Además, si {\itshape L} es regular también sabemos que existe una gramática regular G ≡ (Σ \textquotesingle{}, V, S, P) tal que L(\+G) = L(\+M).
+
+Dicha gramática regular G se puede definir como\+:
+
+
+\begin{DoxyCode}
+Σ′ = Σ  
+V = Q  
+S = s  
+P = \{q → ap | δ(q, a) = p\} ∪ \{q → ε | q ∈ F\}
+\end{DoxyCode}
+
+
+\subsection*{Ficheros para la especificación de gramáticas}
+
+Los ficheros de texto que describen gramáticas regulares o independientes del contexto tendrán la extensión .grammar y la siguiente estructura\+:
+
+
+\begin{DoxyItemize}
+\item Línea 1\+: número total de símbolos terminales que posee la gramática.
+\item Línea 2\+: lista de todos los símbolos terminales de la gramática, separados por espacios en blanco. Cada terminal se representa mediante un caracter A\+S\+C\+II.
+\item Línea 3\+: número total de símbolos no terminales que posee la gramática.
+\item Línea 4\+: lista de todos los símbolos no terminales de la gramática, separados por espacios en blanco. Cada símbolo no terminal vendrá representado también mediante un caracter A\+S\+C\+II, preferiblemente letras mayúsculas de nuestro abecedario. Se tomará como símbolo de arranque de la gramática aquel símbolo no terminal que aparezca primero en esta lista.
+\item De la línea 5 en adelante el fichero tendrá una línea para cada uno de los símbolos no terminales de la gramática. En cada línea se especificarán las reglas de producción de un determinado símbolo no terminal. Cada línea tendrá el formato siguiente\+:
+\begin{DoxyItemize}
+\item Caracter correspondiente al no terminal.
+\item Flecha \textquotesingle{}-\/$>$\textquotesingle{} (caracteres menos y mayor)
+\item Reglas de producción para el no terminal en cuestión. Cada regla de producción estará formada por una sucesión de caracteres correspondientes a símbolos terminales o no terminales, o el caracter $\sim$ (código A\+S\+C\+II 126) para la cadena vacía. Las diferentes alternativas de producciones para un mismo símbolo no terminal vendrán dadas en una misma línea separadas entre sí por el símbolo \textquotesingle{}$\vert$\textquotesingle{} (barra vertical).
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+A modo de ejemplo, un fichero para la descripción de una gramática regular (y también independiente del contexto) sería el siguiente\+:
+
+
+\begin{DoxyCode}
+2  
+0 1  
+3  
+S A B  
+S -> 0A | 1S | ~  
+A -> 0B | 1S | ~  
+B -> 0B | 1B
+\end{DoxyCode}
+
+
+\subsection*{Funcionamiento general del programa}
+
+El programa principal recibirá mediante la línea de comandos dos argumentos\+:
+
+
+\begin{DoxyItemize}
+\item Nombre del fichero $\ast$.dfa$\ast$ donde vendrá dada la especificación del autómata finito determinista a partir del cual se desea construir la gramática regular.
+\item Nombre del fichero $\ast$.grammar$\ast$ donde se almacenará la especificación de la gramática regular obtenida tras aplicar el proceso de construcción de la gramática a partir del \mbox{\hyperlink{class_d_f_a}{D\+FA}}.
+\end{DoxyItemize}
+
+El programa deberá funcionar de la manera siguiente\+:
+
+1) En primer lugar, se deberá crear un objeto {\bfseries \mbox{\hyperlink{class_d_f_a}{D\+FA}}} a partir de la especificación del autómata finito dado en el fichero $\ast$.dfa$\ast$ correspondiente. Al construir el \mbox{\hyperlink{class_d_f_a}{D\+FA}} se deberá verificar que el fichero .dfa dado como entrada realmente especifica un autómata finito determinista. 2) A continuación, se aplicará el proceso descrito anteriormente para construir una gramática regular a partir del \mbox{\hyperlink{class_d_f_a}{D\+FA}} cargado desde fichero. Para almacenar la gramática regular resultante se creará un objeto de tipo \mbox{\hyperlink{class_g_r}{GR}} (gramática regular). 3) Finalmente, la gramática regular obtenida tras este proceso se exportará al fichero $\ast$.grammar$\ast$ especificado como fichero de salida mediante la línea de comandos. 4) No es necesario que el programa principal muestre al usuario un menú por pantalla. De hecho, no hace falta mostrar los resultados por pantalla pues lo que se solicita es que la gramática obtenida se almacene en un fichero .grammar.
+
+\subsection*{Detalles de implementación}
+
+
+\begin{DoxyItemize}
+\item Se deberá crear una clase {\bfseries \mbox{\hyperlink{class_g_r}{GR}}} para representar a una gramática regular. La clase deberá tener al menos métodos que permitan inicializar desde un fichero de entrada y exportar a un fichero de salida.
+\item Se requerirá el uso de \href{http://stackoverflow.com/questions/2481269/how-to-make-simple-c-makefile}{\tt Makefiles} para compilar los códigos.
+\item Línea de comandos\+: el nombre del fichero de entrada (con la especificación del \mbox{\hyperlink{class_d_f_a}{D\+FA}}) y el nombre del fichero de salida (con la gramática regular obtenida) se pasarán al programa por línea de comandos.
+\item Documentación\+: se requerirá un mínimo de documentación para los códigos desarrollados, por lo menos documentar las cabeceras de las clases y los métodos más importantes. Vean referencias en estos \mbox{[}Tips para documentar códigos\mbox{]} utilizando \href{http://www.doxygen.nl/index.html}{\tt Doxygen}
+\end{DoxyItemize}
+
+{\bfseries N\+O\+TA\+:}  es un script de python para convertir el formato de gramática definido en la práctica al formato \href{http://www.jflap.org}{\tt J\+F\+L\+AP} 

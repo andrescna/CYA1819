@@ -1,0 +1,50 @@
+\hypertarget{classproduction_set}{}\section{Referencia de la Clase production\+Set}
+\label{classproduction_set}\index{production\+Set@{production\+Set}}
+
+
+Implementación de un conjunto de producciones.  
+
+
+
+
+{\ttfamily \#include $<$production\+Set.\+hpp$>$}
+
+\subsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classproduction_set_a9d609b9ba431f52fe92f25fdf80f1e29}\label{classproduction_set_a9d609b9ba431f52fe92f25fdf80f1e29}} 
+\mbox{\hyperlink{classproduction_set_a9d609b9ba431f52fe92f25fdf80f1e29}{production\+Set}} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classproduction_set_a45cf1c8b23b430a979194788111ebd05}\label{classproduction_set_a45cf1c8b23b430a979194788111ebd05}} 
+\mbox{\hyperlink{classproduction_set_a45cf1c8b23b430a979194788111ebd05}{production\+Set}} (char non\+Terminal, set$<$ string $>$ productions)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classproduction_set_ad8dbc8d5ac4cda65a71f50a5222fc480}\label{classproduction_set_ad8dbc8d5ac4cda65a71f50a5222fc480}} 
+char \mbox{\hyperlink{classproduction_set_ad8dbc8d5ac4cda65a71f50a5222fc480}{get\+\_\+non\+Terminal}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve identificador del estado. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classproduction_set_a5ca47e4b246850aeb5e889a0d35df91a}\label{classproduction_set_a5ca47e4b246850aeb5e889a0d35df91a}} 
+void {\bfseries set\+\_\+non\+Terminal} (char id)
+\item 
+\mbox{\Hypertarget{classproduction_set_aa11c806944c2aedd344f48b99dae3909}\label{classproduction_set_aa11c806944c2aedd344f48b99dae3909}} 
+set$<$ string $>$ \mbox{\hyperlink{classproduction_set_aa11c806944c2aedd344f48b99dae3909}{get\+\_\+productions}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve el conjunto de transiciones. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classproduction_set_ac85e72010ffaf536d66c465f51ed82e0}\label{classproduction_set_ac85e72010ffaf536d66c465f51ed82e0}} 
+void \mbox{\hyperlink{classproduction_set_ac85e72010ffaf536d66c465f51ed82e0}{add\+\_\+production}} (string production)
+\begin{DoxyCompactList}\small\item\em Añadir transición al estado. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classproduction_set_a733729272299767dc96b7c1f00a57405}\label{classproduction_set_a733729272299767dc96b7c1f00a57405}} 
+\mbox{\hyperlink{classproduction_set}{production\+Set}} \& \mbox{\hyperlink{classproduction_set_a733729272299767dc96b7c1f00a57405}{operator=}} (const \mbox{\hyperlink{classproduction_set}{production\+Set}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Sobrecarga operador =. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classproduction_set_a076cffeb6ccd1b32756f6be16bb106f8}\label{classproduction_set_a076cffeb6ccd1b32756f6be16bb106f8}} 
+int \mbox{\hyperlink{classproduction_set_a076cffeb6ccd1b32756f6be16bb106f8}{operator==}} (const \mbox{\hyperlink{classproduction_set}{production\+Set}} \&rhs) const
+\begin{DoxyCompactList}\small\item\em Sobrecarga operador ==. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classproduction_set_a114e5b417e44facba2aaab58466dd62d}\label{classproduction_set_a114e5b417e44facba2aaab58466dd62d}} 
+int \mbox{\hyperlink{classproduction_set_a114e5b417e44facba2aaab58466dd62d}{operator$<$}} (const \mbox{\hyperlink{classproduction_set}{production\+Set}} \&rhs) const
+\begin{DoxyCompactList}\small\item\em Sobrecarga operador $<$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Implementación de un conjunto de producciones. 
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+include/production\+Set.\+hpp\item 
+src/production\+Set.\+cpp\end{DoxyCompactItemize}

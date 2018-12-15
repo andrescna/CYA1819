@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulador NFA: Práctica #09: Gramática regular a partir de DFA</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Simulador NFA
+   </div>
+   <div id="projectbrief">Simula el comportamiento de un NFA</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Práctica #09: Gramática regular a partir de <a class="el" href="class_d_f_a.html" title="Implementación de un NFA. ">DFA</a> </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h2>Objetivo</h2>
+<p>El objetivo de esta práctica consiste en la realización de un programa en C++ que lea desde un fichero la especificación de un autómata finito determinista y obtenga a partir de él una gramática regular que genere el lenguaje reconocido por el autómata.</p>
+<h2>Gramática regular</h2>
+<p>Una gramática regular es una 4-tupla G ≡ (Σ, V, S, P) donde:</p>
+<ul>
+<li>Σ es el conjunto de símbolos terminales o alfabeto de la gramática.</li>
+<li>V es el conjunto de símbolos no terminales.</li>
+<li>S es un símbolo no terminal que se llama símbolo de arranque o axioma de la gramática (S ∈ V ).</li>
+<li>P es una colección de reglas de sustitución denominadas producciones, tal que:<ul>
+<li>Todas las producciones son regulares por la derecha: <em>A → uB | v</em> (tal que A, B ∈ V y u, v ∈ Σ*)</li>
+<li>O, todas las producciones son regulares por la izquierda: <em>A → Bu | v</em> (tal que A, B ∈ V y u, v ∈ Σ*)</li>
+</ul>
+</li>
+</ul>
+<p>Se dice que una gramática es lineal por la derecha si todas sus producciones son regulares por la derecha. De forma análoga, se dice que una gramática es lineal por la izquierda si todas sus producciones son regulares por la izquierda.</p>
+<p>Teniendo esto en cuenta diremos que una gramática es regular si es lineal por la derecha o lineal por la izquierda.</p>
+<h2>Gramática regular a partir de un <a class="el" href="class_d_f_a.html" title="Implementación de un NFA. ">DFA</a></h2>
+<p>Sea <em>L</em> un lenguaje regular, entonces existe un <a class="el" href="class_d_f_a.html" title="Implementación de un NFA. ">DFA</a> <em>M ≡ (Σ,Q, s, F, δ)</em>, tal que <em>L = L(M)</em>. Además, si <em>L</em> es regular también sabemos que existe una gramática regular G ≡ (Σ ', V, S, P) tal que L(G) = L(M).</p>
+<p>Dicha gramática regular G se puede definir como:</p>
+<div class="fragment"><div class="line">Σ′ = Σ  </div><div class="line">V = Q  </div><div class="line">S = s  </div><div class="line">P = {q → ap | δ(q, a) = p} ∪ {q → ε | q ∈ F}</div></div><!-- fragment --><h2>Ficheros para la especificación de gramáticas</h2>
+<p>Los ficheros de texto que describen gramáticas regulares o independientes del contexto tendrán la extensión .grammar y la siguiente estructura:</p>
+<ul>
+<li>Línea 1: número total de símbolos terminales que posee la gramática.</li>
+<li>Línea 2: lista de todos los símbolos terminales de la gramática, separados por espacios en blanco. Cada terminal se representa mediante un caracter ASCII.</li>
+<li>Línea 3: número total de símbolos no terminales que posee la gramática.</li>
+<li>Línea 4: lista de todos los símbolos no terminales de la gramática, separados por espacios en blanco. Cada símbolo no terminal vendrá representado también mediante un caracter ASCII, preferiblemente letras mayúsculas de nuestro abecedario. Se tomará como símbolo de arranque de la gramática aquel símbolo no terminal que aparezca primero en esta lista.</li>
+<li>De la línea 5 en adelante el fichero tendrá una línea para cada uno de los símbolos no terminales de la gramática. En cada línea se especificarán las reglas de producción de un determinado símbolo no terminal. Cada línea tendrá el formato siguiente:<ul>
+<li>Caracter correspondiente al no terminal.</li>
+<li>Flecha '-&gt;' (caracteres menos y mayor)</li>
+<li>Reglas de producción para el no terminal en cuestión. Cada regla de producción estará formada por una sucesión de caracteres correspondientes a símbolos terminales o no terminales, o el caracter ~ (código ASCII 126) para la cadena vacía. Las diferentes alternativas de producciones para un mismo símbolo no terminal vendrán dadas en una misma línea separadas entre sí por el símbolo '|' (barra vertical).</li>
+</ul>
+</li>
+</ul>
+<p>A modo de ejemplo, un fichero para la descripción de una gramática regular (y también independiente del contexto) sería el siguiente:</p>
+<div class="fragment"><div class="line">2  </div><div class="line">0 1  </div><div class="line">3  </div><div class="line">S A B  </div><div class="line">S -&gt; 0A | 1S | ~  </div><div class="line">A -&gt; 0B | 1S | ~  </div><div class="line">B -&gt; 0B | 1B</div></div><!-- fragment --><h2>Funcionamiento general del programa</h2>
+<p>El programa principal recibirá mediante la línea de comandos dos argumentos:</p>
+<ul>
+<li>Nombre del fichero *.dfa* donde vendrá dada la especificación del autómata finito determinista a partir del cual se desea construir la gramática regular.</li>
+<li>Nombre del fichero *.grammar* donde se almacenará la especificación de la gramática regular obtenida tras aplicar el proceso de construcción de la gramática a partir del <a class="el" href="class_d_f_a.html" title="Implementación de un NFA. ">DFA</a>.</li>
+</ul>
+<p>El programa deberá funcionar de la manera siguiente:</p>
+<p>1) En primer lugar, se deberá crear un objeto <b><a class="el" href="class_d_f_a.html" title="Implementación de un NFA. ">DFA</a></b> a partir de la especificación del autómata finito dado en el fichero *.dfa* correspondiente. Al construir el <a class="el" href="class_d_f_a.html" title="Implementación de un NFA. ">DFA</a> se deberá verificar que el fichero .dfa dado como entrada realmente especifica un autómata finito determinista. 2) A continuación, se aplicará el proceso descrito anteriormente para construir una gramática regular a partir del <a class="el" href="class_d_f_a.html" title="Implementación de un NFA. ">DFA</a> cargado desde fichero. Para almacenar la gramática regular resultante se creará un objeto de tipo <a class="el" href="class_g_r.html">GR</a> (gramática regular). 3) Finalmente, la gramática regular obtenida tras este proceso se exportará al fichero *.grammar* especificado como fichero de salida mediante la línea de comandos. 4) No es necesario que el programa principal muestre al usuario un menú por pantalla. De hecho, no hace falta mostrar los resultados por pantalla pues lo que se solicita es que la gramática obtenida se almacene en un fichero .grammar.</p>
+<h2>Detalles de implementación</h2>
+<ul>
+<li>Se deberá crear una clase <b><a class="el" href="class_g_r.html">GR</a></b> para representar a una gramática regular. La clase deberá tener al menos métodos que permitan inicializar desde un fichero de entrada y exportar a un fichero de salida.</li>
+<li>Se requerirá el uso de <a href="http://stackoverflow.com/questions/2481269/how-to-make-simple-c-makefile">Makefiles</a> para compilar los códigos.</li>
+<li>Línea de comandos: el nombre del fichero de entrada (con la especificación del <a class="el" href="class_d_f_a.html" title="Implementación de un NFA. ">DFA</a>) y el nombre del fichero de salida (con la gramática regular obtenida) se pasarán al programa por línea de comandos.</li>
+<li>Documentación: se requerirá un mínimo de documentación para los códigos desarrollados, por lo menos documentar las cabeceras de las clases y los métodos más importantes. Vean referencias en estos [Tips para documentar códigos] utilizando <a href="http://www.doxygen.nl/index.html">Doxygen</a></li>
+</ul>
+<p><b>NOTA:</b> </p><div class="image">
+<img src="doc/gr2jflap.py" alt="gr2flap.py"/>
+</div>
+<p> es un script de python para convertir el formato de gramática definido en la práctica al formato <a href="http://www.jflap.org">JFLAP</a> </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

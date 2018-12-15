@@ -33,7 +33,7 @@ int main(int argc, char** argv){
 
     DFA dfa;
     GR grammar;
-
+    
     if (argc != 3) {
         cout << "\e[1mERROR\e[0m. Argumentos insuficientes o excesivos" << endl << endl;
         cout << "El formato de entrada es: " << endl << endl;
@@ -43,25 +43,30 @@ int main(int argc, char** argv){
 
         return(1);
     }    
- 
-    cout << "-> DFA de entrada: \t\t" << argv[1] << endl;
-    cout << "-> Gramática de salida: \t" << argv[2] << endl;
-
-
-    /// MIRA A VER LOS ARGUMENTOS!!!
-
-    /*//debug //////////////////////////
-        nfa.read_NFA(default_filename);
-        nfa_loaded=true;
-        end_loop2=true;
-    //debug //////////////////////////*/
     
-    if (dfa.read_DFA(argv[1])==!0) {  //revisa qué va en el nombre
+    cout << "DFA de entrada: \t" << argv[1] << endl;
+    cout << "Gramática de salida: \t" << argv[2] << endl;
+
+    // ERROR. DFA no cargado
+    if (dfa.read_DFA(argv[1])==!0) { 
         cout << "\e[1mERROR\e[0m. No se ha podido cargar el DFA" << endl;
         return(1);
     }
+    
+    cout << "Convirtiendo... ";
 
+    grammar = dfa.convert_to_GR();
 
+    cout << "Listo." << endl << endl << "\e[1m-> Gramática generada con éxito\e[0m" << endl;
 
+    cout << endl << "La gramática regular generada es:" << endl;
+    grammar.show_GR();
+    
+    cout << endl << "Exportando... ";
+
+    grammar.write_to_file(argv[2]);
+
+    cout << "Listo." << endl << endl;
+    cout << "\e[1m-> Grámática exportada con éxito\e[0m" << endl << endl;
     
 }
