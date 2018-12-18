@@ -1,14 +1,11 @@
-3
-a b c
-10
-S A B C D E F G H I
-S -> aB | bA | cI
-A -> aI | bI | cC | ~
-B -> aI | bE | cD | ~
-C -> aG | bF | cC | ~
-D -> aI | bE | cD | ~
-E -> aI | bE | cD
-F -> aG | bF | cI
-G -> aF | bB | cI | ~
-H -> aG | bF | cI
-I -> aI | bI | cI
+2
+a b
+7
+S A B C D E F
+S -> aA
+A -> aB | bE
+B -> aA | bC
+C -> aF | bD | ~
+D -> aF | bC
+E -> aF | bE
+F -> aF | bF | ~

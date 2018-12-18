@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simulador NFA: Referencia de la Clase productionSet</title>
+<title>DFA a Gramatica regular: Referencia de la Clase productionSet</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Simulador NFA
+   <div id="projectname">DFA a Gramatica regular
    </div>
-   <div id="projectbrief">Simula el comportamiento de un NFA</div>
+   <div id="projectbrief">Permite convertir un DFA a GR</div>
   </td>
  </tr>
  </tbody>
@@ -115,6 +115,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Implementación de un conjunto de producciones. </p>
+<p>Esta clase implementa, de forma análoga a la clase estado para DFAs/NFAs, un conjunto de producciones productions_ para un determinado símbolo no terminal nonTerminal_</p>
+<p>Implementa métodos para acceder/modificar el no terminal, acceder y añadir producciones y la sobrecarga de operadores necesaria al tener que implementar un set&lt;productionSet&gt; en la clase <a class="el" href="class_g_r.html">GR</a>. </p>
 </div><hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>include/<a class="el" href="production_set_8hpp_source.html">productionSet.hpp</a></li>
 <li>src/productionSet.cpp</li>

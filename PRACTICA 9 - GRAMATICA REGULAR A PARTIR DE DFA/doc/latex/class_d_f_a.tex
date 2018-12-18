@@ -2,7 +2,7 @@
 \label{class_d_f_a}\index{D\+FA@{D\+FA}}
 
 
-Implementación de un N\+FA.  
+Implementación de un \mbox{\hyperlink{class_d_f_a}{D\+FA}}.  
 
 
 
@@ -31,17 +31,13 @@ int \mbox{\hyperlink{class_d_f_a_a227c0b51b2f512efe3dad555438dcb87}{analyze\+\_\
 
 
 \subsection{Descripción detallada}
-Implementación de un N\+FA. 
+Implementación de un \mbox{\hyperlink{class_d_f_a}{D\+FA}}. 
 
-Esta clase implementa un Autómata Finito No determinista (N\+FA), que formalmente está formado por un conjunto de estados, un estado inicial, un conjunto de estados finales o de aceptación, un alfabeto y una función de transición. En este caso la implementación se lleva a cabo definiendo un número total de estados, un estado inicial, un conjunto de estados implementado como un std\+::set y un alfabeto implementado como un std\+::char.
+Esta clase implementa un Autómata Finito Determinista (N\+FA), que formalmente está formado por un conjunto de estados, un estado inicial, un conjunto de estados finales o de aceptación, un alfabeto y una función de transición. En este caso la implementación se lleva a cabo definiendo un número total de estados, un estado inicial, un conjunto de estados implementado como un std\+::set de elementos de clase state y un alfabeto implementado como un std\+::char.
 
-\begin{DoxyVerb}                ARREGLA ESTO
-\end{DoxyVerb}
+Además se definen los métodos necesarios para llevar a cabo las operaciones que se nos piden en los requisitos\+: leer, mostrar, calcular los estados de muerte y analizar una cadena para ver si el \mbox{\hyperlink{class_d_f_a}{D\+FA}} la reconoce.
 
-
-Además se definen los métodos necesarios para llevar a cabo las operaciones que se nos piden en los requisitos\+: leer, mostrar, calcular los estados de muerte, calcular estados importantes, comprobar si es un \mbox{\hyperlink{class_d_f_a}{D\+FA}} y analizar una cadena para ver si el N\+FA la reconoce.
-
-Para la práctica 8 se añaden los métodos para minimizar un \mbox{\hyperlink{class_d_f_a}{D\+FA}} (puesto que a fin de cuentas un \mbox{\hyperlink{class_d_f_a}{D\+FA}} es un caso particular de N\+FA con las restricciones de una única transición por cada símbolo del alfabeto para cada estado y el no poder tener epsilon-\/transiciones, por lo que se puede representar con la misma estructura de un N\+FA), almacenar en memoria el nuevo \mbox{\hyperlink{class_d_f_a}{D\+FA}} minimizado sustituyendo los datos del cargado actualmente y un método auxiliar para guardar el N\+F\+A/\+D\+FA almacenado en un archivo (que simplemente es el método show\+\_\+\+N\+F\+A() pero mandando la salida a un fichero y no a cout) 
+Para la práctica 9 se añade el método para generar una gramática regular a partir del \mbox{\hyperlink{class_d_f_a}{D\+FA}} que tengamos cargado en memoria. Esta convierte los símbolos del alfabeto del \mbox{\hyperlink{class_d_f_a}{D\+FA}} en símbolos no terminales de la \mbox{\hyperlink{class_g_r}{GR}}, cada uno de los estados en un símbolo no terminal y el conjunto de transiciones pasa a ser un conjunto de producciones. 
 
 \subsection{Documentación de las funciones miembro}
 \mbox{\Hypertarget{class_d_f_a_a227c0b51b2f512efe3dad555438dcb87}\label{class_d_f_a_a227c0b51b2f512efe3dad555438dcb87}} 

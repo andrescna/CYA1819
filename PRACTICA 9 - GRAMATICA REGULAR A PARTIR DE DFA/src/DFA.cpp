@@ -279,6 +279,7 @@ GR DFA::convert_to_GR(){
 
     set<state>::iterator i = states_.begin();
     
+    // Para cada uno de los estados creamos el conjunto de producciones y el no terminal que lo representa
     for (int j = 0; j < totalStates_; j++){
 
         state temp_state = *i;

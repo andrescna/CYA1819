@@ -1,7 +1,12 @@
 /*! \class productionSet
 *   \brief  Implementación de un conjunto de producciones
 *
-
+*   Esta clase implementa, de forma análoga a la clase estado para DFAs/NFAs, un conjunto
+*   de producciones productions_ para un determinado símbolo no terminal nonTerminal_
+*   
+*   Implementa métodos para acceder/modificar el no terminal, acceder y añadir producciones
+*   y la sobrecarga de operadores necesaria al tener que implementar un set<productionSet>
+*   en la clase GR.
 */
 
 #pragma once
@@ -27,10 +32,7 @@ class productionSet {
     void set_nonTerminal(char id);
     
     set<string> get_productions();
-
     void add_production(string production);
-    
-    //void add_transition(char character, char nextState);
 
     productionSet& operator=(const productionSet &rhs);
     int operator==(const productionSet &rhs) const;

@@ -7,7 +7,7 @@ CYA 2018-19.
 PRACTICA 9 - GRAMATICA REGULAR A PARTIR DE DFA.
 
 @author Andrés Concepción Afonso
-@date 10/12/2018
+@date 18/12/2018
 */
 
 #include "DFA.hpp"
@@ -47,7 +47,7 @@ int main(int argc, char** argv){
     cout << "DFA de entrada: \t" << argv[1] << endl;
     cout << "Gramática de salida: \t" << argv[2] << endl;
 
-    // ERROR. DFA no cargado
+    // ERROR. DFA no cargado 
     if (dfa.read_DFA(argv[1])==!0) { 
         cout << "\e[1mERROR\e[0m. No se ha podido cargar el DFA" << endl;
         return(1);
